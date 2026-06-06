@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E5C988"/>
+      <stop offset="100%" stop-color="#A88845"/>
+    </linearGradient>
+    <radialGradient id="ambient" cx="0.8" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#D4B876" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#1B2A4E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ambient2" cx="0.1" cy="0.85" r="0.55">
+      <stop offset="0%" stop-color="#1B2A4E" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#0A0F1F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0F1F"/>
+  <rect width="1200" height="630" fill="url(#ambient)"/>
+  <rect width="1200" height="630" fill="url(#ambient2)"/>
+
+  <!-- Top-left PK monogram badge -->
+  <g transform="translate(72, 64)">
+    <rect width="56" height="56" rx="14" fill="#0F1B36" stroke="rgba(212,184,118,0.35)" stroke-width="1"/>
+    <text x="28" y="38" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="22" font-weight="600"
+          fill="url(#gold)" letter-spacing="1">PK</text>
+  </g>
+
+  <!-- Top-right "Open to PM roles" pill -->
+  <g transform="translate(900, 80)">
+    <rect width="228" height="36" rx="18" fill="rgba(212,184,118,0.08)" stroke="rgba(212,184,118,0.3)" stroke-width="1"/>
+    <circle cx="22" cy="18" r="4" fill="#E5C988"/>
+    <text x="38" y="23" font-family="Manrope, Helvetica, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#D4B876" letter-spacing="2">OPEN TO PM ROLES</text>
+  </g>
+
+  <!-- Wordmark: PURVA / KULKARNI -->
+  <g transform="translate(72, 220)">
+    <text x="0" y="0"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="108" font-weight="500"
+          fill="#F5F0E2" letter-spacing="4">PURVA</text>
+
+    <!-- Gold rule + dot ornament between lines -->
+    <line x1="0" y1="46" x2="120" y2="46" stroke="#D4B876" stroke-width="1.5"/>
+    <circle cx="128" cy="46" r="4.5" fill="#D4B876"/>
+
+    <text x="0" y="146"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="108" font-weight="500"
+          fill="#F5F0E2" letter-spacing="4">KULKARNI</text>
+  </g>
+
+  <!-- Role label -->
+  <text x="72" y="450"
+        font-family="Manrope, Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="600"
+        fill="#D4B876" letter-spacing="6">PRODUCT MANAGER</text>
+
+  <!-- Tagline -->
+  <text x="72" y="510"
+        font-family="Manrope, Helvetica, Arial, sans-serif"
+        font-size="28" font-weight="300"
+        fill="rgba(245,240,226,0.78)">
+    I turn complex problems into products people actually want to use.
+  </text>
+
+  <!-- Bottom-right brand line -->
+  <text x="1128" y="572" text-anchor="end"
+        font-family="Manrope, Helvetica, Arial, sans-serif"
+        font-size="13" font-weight="600"
+        fill="rgba(245,240,226,0.5)" letter-spacing="3">FOUNDER · MEAL MELODY · ATLANTA, GA</text>
+</svg>
