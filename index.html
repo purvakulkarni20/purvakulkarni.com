@@ -440,6 +440,13 @@ section { padding: 28px 0; }
   transition: all 0.2s ease;
 }
 .featured-cta:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
+.featured-cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.featured-cta-live {
+  background: var(--gold);
+  color: var(--navy-deep) !important;
+  border-color: var(--gold-bright);
+}
+.featured-cta-live:hover { background: var(--gold-bright); }
 .featured-details {
   padding: 44px;
   display: flex;
@@ -941,6 +948,122 @@ section { padding: 28px 0; }
 }
 .aside-text em { color: var(--gold); font-style: italic; }
 
+/* ============ CARD CLICK + MODAL ============ */
+.project-card, .exp-card { cursor: pointer; }
+.project-card[data-modal]:hover .project-name,
+.exp-card[data-modal]:hover .exp-role { color: var(--gold-bright); transition: color 0.2s ease; }
+
+dialog.card-modal {
+  border: none;
+  border-radius: var(--r-xl);
+  padding: 0;
+  background: var(--surface);
+  color: var(--text);
+  max-width: 760px;
+  width: calc(100% - 32px);
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px var(--border-strong);
+}
+dialog.card-modal::backdrop {
+  background: rgba(10, 15, 31, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-inner {
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 40px 44px 36px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.modal-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.modal-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.modal-sub {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-bottom: 24px;
+}
+.modal-close {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  color: var(--text);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.modal-close:hover { background: var(--surface-3); border-color: var(--border); }
+.modal-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.modal-bullets li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  display: flex;
+  gap: 12px;
+}
+.modal-bullets li::before {
+  content: '◆';
+  color: var(--gold);
+  font-size: 9px;
+  padding-top: 6px;
+  flex-shrink: 0;
+}
+.modal-bullets strong { color: var(--text); font-weight: 600; }
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-soft);
+}
+.modal-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 11px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  color: var(--text-2);
+}
+@media (max-width: 560px) {
+  .modal-inner { padding: 28px 24px 24px; }
+  .modal-title { font-size: 22px; }
+}
+
 footer {
   max-width: var(--max);
   margin: 24px auto 0;
@@ -1057,10 +1180,16 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               A <em>meal recommendation and cooking companion</em> — traditional recipes from any cuisine, AI-adapted to your dietary preferences, with a personal AI chef guiding you step by step.
             </p>
           </div>
-          <a href="meal-melody.html" class="featured-cta">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            View Case Study
-          </a>
+          <div class="featured-cta-row">
+            <a href="meal-melody.html" class="featured-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              View Case Study
+            </a>
+            <a href="https://mealmelody.com" target="_blank" rel="noopener" class="featured-cta featured-cta-live">
+              Visit Live Site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
         </div>
 
         <div class="featured-details">
@@ -1117,7 +1246,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
 
       <div class="project-grid">
 
-        <article class="project-card">
+        <article class="project-card" data-modal="modal-ea">
           <div class="project-art project-art-ea">
             <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
               <rect x="84" y="30" width="72" height="80" rx="4" fill="#000000"/>
@@ -1138,7 +1267,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-modal="modal-zip">
           <div class="project-art project-art-zip">
             <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
               <text x="120" y="86" text-anchor="middle" font-family="Manrope, sans-serif" font-size="64" font-weight="800" fill="#FFFFFF" letter-spacing="-3">zip</text>
@@ -1159,7 +1288,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-modal="modal-netflix">
           <div class="project-art project-art-netflix">
             <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
               <text x="120" y="84" text-anchor="middle" font-family="Manrope, Arial Black, sans-serif" font-size="30" font-weight="900" fill="#E50914" letter-spacing="-1.5">NETFLIX</text>
@@ -1180,7 +1309,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-modal="modal-chipotle">
           <div class="project-art project-art-chipotle">
             <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
               <text x="120" y="86" text-anchor="middle" font-family="Manrope, Arial Black, sans-serif" font-size="26" font-weight="900" fill="#A81612" letter-spacing="-0.5">CHIPOTLE</text>
@@ -1259,7 +1388,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
       <div class="exp-scroll-wrap">
         <div class="exp-scroll">
 
-          <article class="exp-card">
+          <article class="exp-card" data-link="meal-melody.html">
             <div class="exp-art exp-art-mm">
               <img src="Meal%20Melody%20Logo.png" alt="Meal Melody" class="exp-art-img" />
             </div>
@@ -1270,7 +1399,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
             </div>
           </article>
 
-          <article class="exp-card">
+          <article class="exp-card" data-modal="modal-ukg">
             <div class="exp-art exp-art-ukg">
               <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="exp-art-svg">
                 <text x="120" y="92" text-anchor="middle" font-family="Manrope, sans-serif" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="-0.03em">UKG</text>
@@ -1285,7 +1414,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
             </div>
           </article>
 
-          <article class="exp-card">
+          <article class="exp-card" data-modal="modal-sidvin">
             <div class="exp-art exp-art-sv">
               <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="exp-art-svg">
                 <text x="120" y="100" text-anchor="middle" font-family="Manrope, sans-serif" font-size="54" font-weight="700" fill="#FFFFFF" letter-spacing="-0.02em">SidVin</text>
@@ -1448,6 +1577,154 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
 
 </main>
 
+<!-- ============ CARD MODALS ============ -->
+
+<dialog id="modal-ea" class="card-modal" aria-labelledby="ea-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">PM Experience Program · Electronic Arts</div>
+        <h2 id="ea-title" class="modal-title">Player Segmentation & Engagement Analytics</h2>
+        <div class="modal-sub">Case Project · 2026</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li><strong>Analyzed gaming industry KPIs</strong> including player retention, monetization metrics, and engagement funnels to evaluate product performance against business objectives and identify optimization opportunities.</li>
+      <li><strong>Designed presentation strategy and project roadmap</strong> for player segmentation analysis, defining stakeholder requirements, data visualization approach, and delivery timelines to maximize executive impact.</li>
+      <li>Applied gaming industry best practices for <strong>measuring user acquisition costs, lifetime value, and churn</strong> rates to inform product decision-making frameworks.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Product Analytics</span>
+      <span class="modal-tag">Segmentation</span>
+      <span class="modal-tag">LTV / CAC</span>
+      <span class="modal-tag">Player Retention</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-zip" class="card-modal" aria-labelledby="zip-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">Workforce Analytics Project · Zip Co.</div>
+        <h2 id="zip-title" class="modal-title">Predictive Headcount Optimization Model</h2>
+        <div class="modal-sub">Case Project · Team of 4</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li><strong>Led a 4-person team</strong> to build a predictive analytics model, identifying optimization opportunities that informed a strategic headcount reallocation recommendation.</li>
+      <li><strong>Synthesized unstructured operational data</strong> into a prioritized action plan, applying structured analytical frameworks to balance efficiency gains against workforce impact.</li>
+      <li>Delivered a presentation with <strong>ROI projections</strong>, translating complex data findings into a clear, decision-ready strategic recommendation.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Predictive Modeling</span>
+      <span class="modal-tag">Workforce Strategy</span>
+      <span class="modal-tag">ROI Analysis</span>
+      <span class="modal-tag">Team Lead</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-netflix" class="card-modal" aria-labelledby="netflix-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">Financial Operations Project · Netflix</div>
+        <h2 id="netflix-title" class="modal-title">Competitive Benchmarking & Growth Roadmap</h2>
+        <div class="modal-sub">Case Project · Team of 4</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li><strong>Directed a 4-member team</strong> to analyze Netflix's financial performance, benchmarking 3 major competitors and identifying subscriber growth trends, revenue risk signals, and market whitespace.</li>
+      <li><strong>Synthesized unstructured market and financial data</strong> into a cohesive strategic narrative, translating findings into product and market expansion recommendations.</li>
+      <li>Produced a <strong>prioritized growth roadmap with data-backed strategic levers</strong>, translating ambiguous data sets into actionable product direction.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Competitive Analysis</span>
+      <span class="modal-tag">Financial Strategy</span>
+      <span class="modal-tag">Growth Roadmap</span>
+      <span class="modal-tag">Team Lead</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-chipotle" class="card-modal" aria-labelledby="chipotle-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">POS & Inventory Project · Chipotle</div>
+        <h2 id="chipotle-title" class="modal-title">POS Organization & Inventory Optimization</h2>
+        <div class="modal-sub">Case Project · Team Lead</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li><strong>Led a team to identify, scope, and prioritize operational inefficiencies</strong> in Chipotle's POS system and inventory management processes, framing findings around user pain points and business impact.</li>
+      <li><strong>Defined improvement recommendations</strong> to optimize inventory tracking and eliminate operational bottlenecks, balancing efficiency gains against operational constraints.</li>
+      <li>Synthesized unstructured operational data into a <strong>structured action plan with clear prioritization</strong>, translating complex findings into decision-ready recommendations.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Operational Strategy</span>
+      <span class="modal-tag">Process Optimization</span>
+      <span class="modal-tag">Decision-Ready Insights</span>
+      <span class="modal-tag">Team Lead</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-ukg" class="card-modal" aria-labelledby="ukg-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">Ultimate Kronos Group · Atlanta, GA</div>
+        <h2 id="ukg-title" class="modal-title">Implementation Solutions Consultant</h2>
+        <div class="modal-sub">Acting Product Owner across enterprise SaaS implementations</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li>Owned <strong>end-to-end product lifecycle for 40+ enterprise SaaS implementations</strong> simultaneously, from requirements discovery and stakeholder alignment through UAT, data migration, and go-live, achieving <strong>100% on-time delivery</strong> across all clients.</li>
+      <li>Translated client business requirements into structured configuration specifications (Customer Requirement Guides), acting as <strong>de facto product owner</strong> between stakeholder needs and engineering; reduced configuration errors by <strong>25%</strong> and accelerated time-to-adoption.</li>
+      <li>Partnered cross-functionally with integration engineers, project managers, and internal product teams to triage feature gaps, log and prioritize JIRA enhancement requests, and resolve testing discrepancies — improving issue resolution speed by <strong>30%</strong> and directly informing the product roadmap.</li>
+      <li>Migrated <strong>4,000+ Human Capital records via API</strong> during active M&A transactions, owning data validation and conversion end-to-end to ensure zero operational disruption at go-live.</li>
+      <li>Advised HR leadership across 3 long-cycle enterprise implementations on product adoption strategy, aligning platform capabilities to organizational goals and reducing post-launch support escalations by <strong>15%</strong>.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Product Ownership</span>
+      <span class="modal-tag">Enterprise SaaS</span>
+      <span class="modal-tag">JIRA</span>
+      <span class="modal-tag">API Migration</span>
+      <span class="modal-tag">Cross-Functional</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-sidvin" class="card-modal" aria-labelledby="sidvin-title">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">SidVin Systems LLC · Atlanta, GA</div>
+        <h2 id="sidvin-title" class="modal-title">Business Analyst Intern</h2>
+        <div class="modal-sub">Agile delivery + process documentation</div>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <ul class="modal-bullets">
+      <li>Supported <strong>Agile sprint planning and backlog grooming</strong> for a cross-functional team, contributing to faster delivery cycles and improved on-time completion of client-facing reporting features.</li>
+      <li>Synthesized client feedback into structured <strong>process improvement recommendations</strong>, increasing reporting accuracy and reducing compliance rework across 2 client accounts.</li>
+      <li>Documented system workflows and requirements end-to-end, producing a <strong>reusable knowledge base</strong> that improved cross-functional handoffs and reduced onboarding ramp time for incoming team members.</li>
+    </ul>
+    <div class="modal-tags">
+      <span class="modal-tag">Agile</span>
+      <span class="modal-tag">Backlog Grooming</span>
+      <span class="modal-tag">Process Documentation</span>
+    </div>
+  </div>
+</dialog>
+
 <script>
   // Smooth horizontal scroll on exp-scroll when shift+wheel
   const expScroll = document.querySelector('.exp-scroll');
@@ -1459,6 +1736,44 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
       }
     }, { passive: false });
   }
+
+  // Card click → open modal OR navigate
+  document.querySelectorAll('[data-modal], [data-link]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Ignore clicks on anchors/buttons inside the card
+      if (e.target.closest('a, button')) return;
+
+      const modalId = card.dataset.modal;
+      const link = card.dataset.link;
+
+      if (modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal && typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      } else if (link) {
+        window.location.href = link;
+      }
+    });
+  });
+
+  // Modal close buttons
+  document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dialog = btn.closest('dialog');
+      if (dialog) dialog.close();
+    });
+  });
+
+  // Click on backdrop closes
+  document.querySelectorAll('dialog.card-modal').forEach(dialog => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
 </script>
 
 </body>
