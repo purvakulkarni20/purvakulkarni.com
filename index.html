@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purva Kulkarni — Product Manager</title>
+<meta name="description" content="AI-empowered Product Manager and founder of Meal Melody. Turning complex problems into products people actually want to use." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0A0F1F;
+  --bg-grad-1: #0F1428;
+  --bg-grad-2: #141B33;
+  --surface: #141B30;
+  --surface-2: #1D2640;
+  --surface-3: #252F4D;
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --border: rgba(212, 184, 118, 0.14);
+  --border-strong: rgba(212, 184, 118, 0.3);
+  --border-soft: rgba(245, 240, 226, 0.08);
+  --text: #F5F0E2;
+  --text-2: rgba(245, 240, 226, 0.7);
+  --text-3: rgba(245, 240, 226, 0.5);
+  --text-4: rgba(245, 240, 226, 0.35);
+  --gold: #D4B876;
+  --gold-bright: #E5C988;
+  --gold-dim: #A88845;
+  --navy: #1B2A4E;
+  --navy-deep: #0F1B36;
+  --max: 1240px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% -10%, rgba(212, 184, 118, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 0% 40%, rgba(27, 42, 78, 0.45), transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+::selection { background: var(--gold); color: var(--navy-deep); }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(10, 15, 31, 0.72);
+  border-bottom: 1px solid var(--border-soft);
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dim) 100%);
+  color: var(--navy-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 16px rgba(212, 184, 118, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.brand-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.nav-links {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  padding: 8px 16px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+.nav-links a:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-deep) !important;
+  background: var(--gold) !important;
+  padding: 9px 18px !important;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--gold-bright) !important; transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 80px 0 64px;
+  position: relative;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  padding: 8px 16px;
+  background: rgba(212, 184, 118, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 12px var(--gold);
+  position: relative;
+}
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.4;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.6); opacity: 0; }
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(56px, 11vw, 144px);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.hero h1 .em {
+  display: block;
+  position: relative;
+  padding-top: 24px;
+  margin-top: 20px;
+  color: var(--text);
+}
+.hero h1 .em::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero h1 .em::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 92px;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.hero-sub {
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
+  color: var(--text-2);
+  max-width: 680px;
+  margin-bottom: 32px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.hero-sub em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.hero-meta span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-2);
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  letter-spacing: -0.005em;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-deep);
+  box-shadow: 0 8px 24px rgba(212, 184, 118, 0.18);
+}
+.btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 184, 118, 0.28); }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border-soft);
+}
+.btn-secondary:hover { background: var(--surface-2); border-color: var(--border); }
+
+/* ============ SECTIONS ============ */
+section { padding: 28px 0; }
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  gap: 24px;
+}
+.section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+.section-title .accent { color: var(--gold); }
+.see-all {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.see-all:hover { color: var(--gold-bright); }
+
+/* ============ FEATURED CARD ============ */
+.featured-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: linear-gradient(135deg, #1B2A4E 0%, #2A1F4A 40%, #5C4528 100%);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+  min-height: 460px;
+}
+.featured-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(212, 184, 118, 0.18), transparent 50%);
+  pointer-events: none;
+}
+.featured-art {
+  position: relative;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+.featured-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.featured-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.featured-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.featured-title em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--gold);
+}
+.featured-pitch {
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 440px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.featured-pitch em { color: var(--gold); font-style: italic; }
+.featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 11px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+.featured-cta:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
+.featured-details {
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: rgba(10, 15, 31, 0.35);
+  backdrop-filter: blur(20px);
+  position: relative;
+}
+.fd-block-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+.fd-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.fd-stat-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.fd-stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.3;
+  font-weight: 500;
+}
+.fd-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fd-list li {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  display: flex;
+  gap: 10px;
+  font-weight: 400;
+}
+.fd-list li::before { content: '◆'; color: var(--gold); font-size: 8px; padding-top: 6px; flex-shrink: 0; }
+.fd-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fd-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============ ABOUT ============ */
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+}
+.about-lead {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+.about-lead .accent { color: var(--gold); }
+.about-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+.about-body p + p { margin-top: 14px; }
+.about-body strong { color: var(--text); font-weight: 600; }
+
+/* ============ METRICS GRID ============ */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 24px;
+  transition: all 0.25s ease;
+}
+.metric-card:hover { background: var(--surface-2); border-color: var(--border); transform: translateY(-2px); }
+.metric-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.metric-label {
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* ============ PROJECTS GRID ============ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+.project-art {
+  height: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.project-art-ea {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(220, 60, 70, 0.18), transparent 60%),
+    linear-gradient(135deg, #2A0A0E 0%, #14060A 100%);
+}
+.project-art-zip {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(127, 200, 230, 0.22), transparent 60%),
+    linear-gradient(135deg, #0A2440 0%, #051227 100%);
+}
+.project-art-netflix {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.16), transparent 60%),
+    linear-gradient(135deg, #1A0608 0%, #050203 100%);
+}
+.project-art-svg {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  z-index: 1;
+}
+.project-art-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(212, 184, 118, 0.3);
+}
+.project-body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.project-meta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.project-name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.project-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+.project-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 11px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  color: var(--text-2);
+}
+
+/* ============ EXPERIENCE ROW (horizontal scroll) ============ */
+.exp-scroll-wrap {
+  position: relative;
+  margin: 0 -32px;
+  padding: 0 32px;
+}
+.exp-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.exp-scroll::-webkit-scrollbar { display: none; }
+.exp-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.exp-card:hover { transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-2); }
+.exp-art {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.exp-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.35));
+  pointer-events: none;
+}
+.exp-art-mm {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(212, 184, 118, 0.35), transparent 60%),
+    linear-gradient(135deg, #5C2E1A 0%, #2A1408 100%);
+}
+.exp-art-ukg {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(127, 184, 127, 0.18), transparent 60%),
+    linear-gradient(135deg, #0E4A3D 0%, #052420 100%);
+}
+.exp-art-sv {
+  background: linear-gradient(135deg, #2A2A3E 0%, #14141F 100%);
+}
+.exp-art-svg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.exp-body {
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.exp-role {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.exp-org {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.exp-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-2);
+  font-weight: 400;
+}
+
+/* ============ TOOLKIT ============ */
+.toolkit-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 36px 40px;
+}
+.tk-group { margin-bottom: 32px; }
+.tk-group:last-child { margin-bottom: 0; }
+.tk-group-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.chip:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.chip.cert { font-size: 12px; }
+
+/* ============ EDUCATION ============ */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 28px;
+}
+.edu-degree {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+.edu-track {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.edu-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.edu-meta .accent { color: var(--gold); font-weight: 600; }
+
+/* ============ CONTACT ============ */
+.contact {
+  padding: 60px 0 80px;
+}
+.contact-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 70%);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 64px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 184, 118, 0.18), transparent 60%);
+  pointer-events: none;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: start;
+  position: relative;
+}
+.contact-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.contact-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+.contact-sub {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-2);
+  max-width: 480px;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.contact-aside {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  border: 1px solid var(--border-soft);
+}
+.aside-block { margin-bottom: 24px; }
+.aside-block:last-child { margin-bottom: 0; }
+.aside-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.aside-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.aside-text em { color: var(--gold); font-style: italic; }
+
+footer {
+  max-width: var(--max);
+  margin: 24px auto 0;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-4);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-top: 1px solid var(--border-soft);
+}
+footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 12px 20px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 6px 10px; font-size: 13px; }
+  .brand-text { display: none; }
+  .featured-card { grid-template-columns: 1fr; min-height: auto; }
+  .featured-art { padding: 32px; }
+  .featured-details { padding: 32px; }
+  .about-card { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: 1fr; }
+  .contact-card { padding: 40px 28px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .exp-scroll-wrap { margin: 0 -20px; padding: 0 20px; }
+  .toolkit-card { padding: 28px 24px; }
+  footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+}
+@media (min-width: 981px) and (max-width: 1100px) {
+  .project-name { font-size: 16px; }
+  .project-desc { font-size: 12.5px; }
+  .project-tag { font-size: 10px; padding: 4px 9px; }
+}
+@media (max-width: 560px) {
+  .hero { padding: 56px 0 40px; }
+  .nav-cta { display: none; }
+  .fd-stats { grid-template-columns: 1fr; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">PK</span>
+      <span class="brand-text">Purva Kulkarni</span>
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="status">
+        <span class="status-dot"></span>
+        Open to Product Manager roles
+      </div>
+      <h1>
+        Purva
+        <span class="em">Kulkarni</span>
+      </h1>
+      <p class="hero-sub">
+        I turn complex problems into products people <em>actually</em> want to use.
+      </p>
+      <div class="hero-meta">
+        <span>AI-Empowered Product Manager</span>
+        <span>Founder, Meal Melody</span>
+        <span>Atlanta, GA</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">
+          See Featured Work
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURED -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured <span class="accent">Project</span></h2>
+        <a href="#projects" class="see-all">More Projects →</a>
+      </div>
+
+      <article class="featured-card">
+        <div class="featured-art">
+          <div>
+            <div class="featured-tag">Consumer AI · Solo Build</div>
+            <h3 class="featured-title">Meal <em>Melody</em></h3>
+            <p class="featured-pitch">
+              An AI-powered app that <em>eliminates meal decision fatigue.</em> Scan your pantry, instantly discover what you can cook — across 50+ global cuisines, with a personal AI chef guiding you step by step.
+            </p>
+          </div>
+          <a href="#" class="featured-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            View Case Study
+          </a>
+        </div>
+
+        <div class="featured-details">
+          <div>
+            <div class="fd-block-label">Outcomes</div>
+            <div class="fd-stats">
+              <div>
+                <div class="fd-stat-num">+45%</div>
+                <div class="fd-stat-label">DAU lift after beta iteration</div>
+              </div>
+              <div>
+                <div class="fd-stat-num">−30%</div>
+                <div class="fd-stat-label">Load time reduction</div>
+              </div>
+              <div>
+                <div class="fd-stat-num">50+</div>
+                <div class="fd-stat-label">Global cuisines supported</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="fd-block-label">What I Owned</div>
+            <ul class="fd-list">
+              <li>Scoped MVP, wrote PRDs, designed full UI/UX</li>
+              <li>Shipped multilingual, voice-enabled AI chef</li>
+              <li>Ran research with 20+ beta users; turned signal into shipping decisions</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="fd-block-label">Stack</div>
+            <div class="fd-stack">
+              <span class="fd-chip">Lovable</span>
+              <span class="fd-chip">Supabase</span>
+              <span class="fd-chip">Claude Code</span>
+              <span class="fd-chip">Gemini APIs</span>
+              <span class="fd-chip">React</span>
+              <span class="fd-chip">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Selected <span class="accent">Projects</span></h2>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <div class="project-art project-art-ea">
+            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
+              <rect x="84" y="30" width="72" height="80" rx="4" fill="#000000"/>
+              <text x="120" y="86" text-anchor="middle" font-family="Manrope, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#FFFFFF" letter-spacing="-2">EA</text>
+              <text x="120" y="125" text-anchor="middle" font-family="Manrope, sans-serif" font-size="7" font-weight="700" fill="rgba(255,255,255,0.55)" letter-spacing="3">ELECTRONIC ARTS</text>
+            </svg>
+            <div class="project-art-tag">CASE PROJECT</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">PM Experience Program · Electronic Arts</div>
+            <h3 class="project-name">Player Segmentation & Engagement Analytics</h3>
+            <p class="project-desc">Analyzed gaming industry KPIs including player retention, monetization metrics, and engagement funnels. Designed a player segmentation analysis roadmap and applied LTV / CAC / churn frameworks to build a product decision-making model grounded in real performance data.</p>
+            <div class="project-tags">
+              <span class="project-tag">Product Analytics</span>
+              <span class="project-tag">Segmentation</span>
+              <span class="project-tag">LTV / CAC</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art project-art-zip">
+            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
+              <text x="120" y="86" text-anchor="middle" font-family="Manrope, sans-serif" font-size="64" font-weight="800" fill="#FFFFFF" letter-spacing="-3">zip</text>
+              <circle cx="158" cy="80" r="4" fill="#7FC8E6"/>
+              <text x="120" y="120" text-anchor="middle" font-family="Manrope, sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.55)" letter-spacing="3">ZIP CO.</text>
+            </svg>
+            <div class="project-art-tag">CASE PROJECT</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">Workforce Analytics Project · Zip Co.</div>
+            <h3 class="project-name">Predictive Headcount Optimization Model</h3>
+            <p class="project-desc">Led a 4-person team building a predictive analytics model to surface workforce optimization opportunities at Zip Co. Translated operational data into a prioritized headcount reallocation framework with ROI projections, packaged as a decision-ready strategic recommendation.</p>
+            <div class="project-tags">
+              <span class="project-tag">Predictive Modeling</span>
+              <span class="project-tag">Workforce Strategy</span>
+              <span class="project-tag">ROI Analysis</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art project-art-netflix">
+            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="project-art-svg">
+              <text x="120" y="84" text-anchor="middle" font-family="Manrope, Arial Black, sans-serif" font-size="30" font-weight="900" fill="#E50914" letter-spacing="-1.5">NETFLIX</text>
+              <line x1="84" y1="98" x2="156" y2="98" stroke="#E50914" stroke-width="2" stroke-linecap="round"/>
+              <text x="120" y="120" text-anchor="middle" font-family="Manrope, sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.55)" letter-spacing="3">CASE ANALYSIS</text>
+            </svg>
+            <div class="project-art-tag">CASE PROJECT</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">Financial Operations Project · Netflix</div>
+            <h3 class="project-name">Competitive Benchmarking & Growth Roadmap</h3>
+            <p class="project-desc">Directed a 4-member team analyzing Netflix's financial performance against 3 major competitors. Surfaced subscriber growth trends, revenue risk signals, and market whitespace; synthesized findings into a prioritized growth roadmap with data-backed strategic levers.</p>
+            <div class="project-tags">
+              <span class="project-tag">Competitive Analysis</span>
+              <span class="project-tag">Financial Strategy</span>
+              <span class="project-tag">Growth Roadmap</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="about-card">
+        <div class="about-lead">
+          Built at the intersection of <span class="accent">business complexity</span> and <span class="accent">user need.</span>
+        </div>
+        <div class="about-body">
+          <p>
+            I've spent three years inside one of the largest HCM platforms in the world, owning <strong>40+ enterprise implementations</strong> simultaneously — defining requirements, closing capability gaps, and acting as de facto product owner between client needs and engineering.
+          </p>
+          <p>
+            Then I built <strong>Meal Melody</strong> solo — wrote the PRDs, designed the UX, shipped multilingual voice-enabled AI features, and used beta feedback to drive a 45% lift in daily active usage.
+          </p>
+          <p>
+            I'm drawn to teams where product is taken seriously, where work moves with urgency, and where the outcome actually matters to the person using it.
+          </p>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-num">40+</div>
+          <div class="metric-label">Enterprise implementations owned end-to-end</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">100%</div>
+          <div class="metric-label">On-time delivery across client portfolio</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">45%</div>
+          <div class="metric-label">DAU lift on Meal Melody iteration</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">4K+</div>
+          <div class="metric-label">HCM records migrated via API during M&amp;A</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <span class="see-all" style="color:var(--text-3); cursor:default;">← scroll →</span>
+      </div>
+
+      <div class="exp-scroll-wrap">
+        <div class="exp-scroll">
+
+          <article class="exp-card">
+            <div class="exp-art exp-art-mm">
+              <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="exp-art-svg">
+                <defs>
+                  <linearGradient id="mmGold" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#E5C988"/>
+                    <stop offset="100%" stop-color="#A88845"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="120" cy="40" r="3.5" fill="url(#mmGold)"/>
+                <text x="120" y="98" text-anchor="middle" font-family="Cinzel, serif" font-size="58" font-weight="600" fill="url(#mmGold)" letter-spacing="2">MM</text>
+                <line x1="92" y1="116" x2="148" y2="116" stroke="url(#mmGold)" stroke-width="1" opacity="0.7"/>
+                <text x="120" y="135" text-anchor="middle" font-family="Cinzel, serif" font-size="9" font-weight="500" fill="#FFFFFF" opacity="0.85" letter-spacing="3.5">MEAL MELODY</text>
+              </svg>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role">Founder & Product Lead</div>
+              <div class="exp-org">Meal Melody</div>
+              <p class="exp-desc">Took an AI-powered meal-discovery app from blank page to shipped product. Full lifecycle: PRDs, UI, AI integration, user research.</p>
+            </div>
+          </article>
+
+          <article class="exp-card">
+            <div class="exp-art exp-art-ukg">
+              <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="exp-art-svg">
+                <text x="120" y="92" text-anchor="middle" font-family="Manrope, sans-serif" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="-0.03em">UKG</text>
+                <line x1="100" y1="108" x2="140" y2="108" stroke="#7FB87F" stroke-width="2.5" stroke-linecap="round"/>
+                <text x="120" y="128" text-anchor="middle" font-family="Manrope, sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="3.5">OUR PURPOSE IS PEOPLE</text>
+              </svg>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role">Implementation Solutions Consultant</div>
+              <div class="exp-org">UKG (Ultimate Kronos Group)</div>
+              <p class="exp-desc">Owned 40+ enterprise SaaS implementations end-to-end. De facto product owner translating client needs into engineering specs. 100% on-time delivery.</p>
+            </div>
+          </article>
+
+          <article class="exp-card">
+            <div class="exp-art exp-art-sv">
+              <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="exp-art-svg">
+                <text x="120" y="100" text-anchor="middle" font-family="Manrope, sans-serif" font-size="54" font-weight="700" fill="#FFFFFF" letter-spacing="-0.02em">SidVin</text>
+                <text x="120" y="124" text-anchor="middle" font-family="Manrope, sans-serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.6)" letter-spacing="3">SYSTEMS LLC</text>
+              </svg>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role">Business Analyst Intern</div>
+              <div class="exp-org">SidVin Systems</div>
+              <p class="exp-desc">Agile sprint support and backlog grooming. Built reusable workflow documentation that reduced onboarding ramp for incoming team members.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLKIT -->
+  <section id="toolkit">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Toolkit</h2>
+      </div>
+
+      <div class="toolkit-card">
+        <div class="tk-group">
+          <div class="tk-group-label">Tools & Tech</div>
+          <div class="chip-row">
+            <span class="chip">SQL</span>
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">JIRA</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Salesforce</span>
+            <span class="chip">ServiceNow</span>
+            <span class="chip">Oracle</span>
+            <span class="chip">Lovable</span>
+            <span class="chip">Cursor</span>
+            <span class="chip">Claude Code</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Canva</span>
+            <span class="chip">HTML / CSS</span>
+          </div>
+        </div>
+
+        <div class="tk-group">
+          <div class="tk-group-label">Certifications</div>
+          <div class="chip-row">
+            <span class="chip cert">AI-Empowered SAFe® PO/PM</span>
+            <span class="chip cert">Microsoft AI PM Pro (in progress)</span>
+            <span class="chip cert">IBM Enterprise Design Thinking</span>
+            <span class="chip cert">AWS Academy Graduate</span>
+            <span class="chip cert">UKG Customer Experience Pro</span>
+          </div>
+        </div>
+
+        <div class="tk-group">
+          <div class="tk-group-label">Languages</div>
+          <div class="chip-row">
+            <span class="chip">Hindi · native</span>
+            <span class="chip">Urdu · native</span>
+            <span class="chip">Marathi · native</span>
+            <span class="chip">English · native</span>
+            <span class="chip">Turkish · working</span>
+            <span class="chip">Portuguese · basic</span>
+            <span class="chip">Spanish · basic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-degree">M.S. Information Systems</div>
+          <div class="edu-track">Digital Innovation & Business Transformation</div>
+          <div class="edu-meta">
+            <span>Georgia State University</span>
+            <span class="accent">Robinson College of Business</span>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-degree">B.S. Business Administration, Information Systems</div>
+          <div class="edu-track">Artificial Intelligence & Data Analytics</div>
+          <div class="edu-meta">
+            <span>Georgia State University</span>
+            <span class="accent">Robinson College of Business</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div>
+            <h2 class="contact-title">Let's build something <em>worth using.</em></h2>
+            <p class="contact-sub">
+              Looking for a PM who's owned the full problem space — from enterprise complexity to consumer simplicity, and shipped both. I'd love to talk.
+            </p>
+            <div class="contact-actions">
+              <a href="mailto:purvakulkarni20@gmail.com" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://www.linkedin.com/in/-purvakulkarni" target="_blank" rel="noopener" class="btn btn-secondary">
+                LinkedIn
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <aside class="contact-aside">
+            <div class="aside-block">
+              <div class="aside-label">Reach Me</div>
+              <div class="aside-text">
+                <a href="mailto:purvakulkarni20@gmail.com" style="color:var(--gold);">purvakulkarni20@gmail.com</a>
+              </div>
+            </div>
+            <div class="aside-block">
+              <div class="aside-label">Off the Clock</div>
+              <div class="aside-text">
+                <em>Cooking, Formula 1,</em> padel, tennis, football, and travel.
+              </div>
+            </div>
+            <div class="aside-block">
+              <div class="aside-label">Based In</div>
+              <div class="aside-text">Atlanta, GA</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-brand">
+          <span class="brand-mark">PK</span>
+          <span>© 2026 Purva Kulkarni</span>
+        </div>
+        <span>Designed & built in Atlanta</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Smooth horizontal scroll on exp-scroll when shift+wheel
+  const expScroll = document.querySelector('.exp-scroll');
+  if (expScroll) {
+    expScroll.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        expScroll.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+  }
+</script>
+
+</body>
+</html>
