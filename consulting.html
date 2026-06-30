@@ -293,16 +293,55 @@ section.cs-section { padding: 28px 0; }
 }
 .owned-item-text { font-size: 14.5px; line-height: 1.55; color: var(--text-2); }
 
-/* STACK */
-.stack-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.stack-chip {
-  font-size: 13px;
-  font-weight: 500;
-  padding: 8px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border-soft);
-  border-radius: 100px;
-  color: var(--text);
+/* STANDALONE TITLE (no eyebrow above) */
+.cs-section-title-standalone { margin-top: 4px; }
+
+/* MINI TILES (Apple Music style, smaller) */
+.mini-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.mini-tile {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  cursor: default;
+}
+.mini-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mini-grad);
+  z-index: 0;
+}
+.mini-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 18%, rgba(255,255,255,0.22), transparent 55%);
+  z-index: 1;
+}
+.mini-tile:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 16px 32px var(--mini-shadow);
+}
+.mini-tile-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 
 /* VISIT CTA */
@@ -370,6 +409,7 @@ footer {
   .engagement::before { left: 22px; top: 22px; }
   .cs-card { padding: 28px 24px; }
   .visit-card { padding: 36px 24px; }
+  .mini-tile-grid { grid-template-columns: repeat(2, 1fr); }
   footer { flex-direction: column; gap: 12px; padding: 24px 20px; text-align: center; }
 }
 </style>
@@ -382,7 +422,7 @@ footer {
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Back to Home
     </a>
-    <a href="mailto:purvakulkarni20@gmail.com" class="nav-cta">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=purvakulkarni20@gmail.com" target="_blank" rel="noopener" class="nav-cta">
       Get In Touch
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
@@ -393,13 +433,13 @@ footer {
 
   <header class="cs-hero">
     <div class="container">
-      <div class="cs-hero-tag">Implementation & Strategy · 2023 to 2026</div>
+      <div class="cs-hero-tag">Implementation &amp; Strategy</div>
       <h1 class="cs-title">Consulting <em>Work</em></h1>
       <p class="cs-tagline">
-        Three years inside one of the largest <em>Human Capital Management</em> platforms in the world, leading 40+ enterprise SaaS implementation engagements end to end. Discovery through go-live, with executive advisory and M&amp;A integration along the way.
+        Currently leading enterprise SaaS implementation engagements at one of the largest <em>Human Capital Management</em> platforms in the world. 40+ engagements end to end, from discovery through go-live, with executive advisory and M&amp;A integration along the way.
       </p>
       <div class="cs-hero-actions">
-        <a href="mailto:purvakulkarni20@gmail.com" class="btn btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=purvakulkarni20@gmail.com" target="_blank" rel="noopener" class="btn btn-primary">
           Get In Touch
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
@@ -434,33 +474,32 @@ footer {
   <section class="cs-section">
     <div class="container">
       <div class="cs-section-eyebrow">Context</div>
-      <h2 class="cs-section-title">Translating client business goals into shipped enterprise software.</h2>
+      <h2 class="cs-section-title">Translating Client Business Goals Into Shipped Enterprise Software</h2>
       <div class="cs-card">
-        <p>Three years embedded in one of the largest Human Capital Management platforms in the world, I led implementation consulting engagements end to end. The work was simple to describe and difficult to do well. Take a client's organizational reality, structure it into a working configuration, and steer it through engineering until it went live and stayed live.</p>
-        <p>Engagements spanned discovery, scoping, stakeholder advisory, M&amp;A integration, and post-launch adoption. Most ran concurrently. Every client had a different version of the same problem. How do you get your operations onto a system that does not yet know how you work?</p>
+        <p>Embedded in one of the largest Human Capital Management platforms in the world, I lead implementation consulting engagements end to end. The work is simple to describe and difficult to do well. Take a client's organizational reality, structure it into a working configuration, and steer it through engineering until it goes live and stays live.</p>
+        <p>Engagements span discovery, scoping, stakeholder advisory, M&amp;A integration, and post-launch adoption. Most run concurrently. Every client has a different version of the same problem. How do you get your operations onto a system that does not yet know how you work?</p>
       </div>
     </div>
   </section>
 
   <section class="cs-section">
     <div class="container">
-      <div class="cs-section-eyebrow">Selected Engagements</div>
-      <h2 class="cs-section-title">Five things that defined the work.</h2>
+      <h2 class="cs-section-title cs-section-title-standalone">Engagement Highlights</h2>
       <ol class="engagements">
         <li class="engagement">
-          <p class="engagement-text">Led <strong>end-to-end client engagements</strong> for 40+ enterprise SaaS implementations simultaneously, owning discovery, scoping, stakeholder alignment, UAT, data migration, and go-live. Achieved <em>100% on-time delivery</em> across all client accounts.</p>
+          <p class="engagement-text">Lead <strong>end-to-end client engagements</strong> for 40+ enterprise SaaS implementations simultaneously, owning discovery, scoping, stakeholder alignment, UAT, data migration, and go-live. Maintain <em>100% On-Time Delivery</em> across all client accounts.</p>
         </li>
         <li class="engagement">
-          <p class="engagement-text">Translated complex client business requirements into structured Customer Requirement Guides and configuration specifications, serving as the <strong>primary advisor between executive stakeholders and engineering</strong>. Reduced configuration errors by <em>25%</em> and accelerated client time-to-adoption.</p>
+          <p class="engagement-text">Translate complex client business requirements into structured Customer Requirement Guides and configuration specifications, serving as the <strong>primary advisor between executive stakeholders and engineering</strong>. Reduced configuration errors by <em>25%</em> and accelerated client time-to-adoption.</p>
         </li>
         <li class="engagement">
-          <p class="engagement-text">Drove cross-functional collaboration with integration engineers, project managers, and product teams to triage feature gaps, prioritize enhancement requests, and resolve testing discrepancies. Improved issue resolution speed by <em>30%</em> and shaped product roadmap based on direct client feedback.</p>
+          <p class="engagement-text">Drive cross-functional collaboration with integration engineers, project managers, and product teams to triage feature gaps, prioritize enhancement requests, and resolve testing discrepancies. Improved issue resolution speed by <em>30%</em> and shaped product roadmap based on direct client feedback.</p>
         </li>
         <li class="engagement">
-          <p class="engagement-text">Led <strong>M&amp;A integration work</strong>, migrating 4,000+ Human Capital records via API during active client acquisitions while owning data validation and conversion end to end. Ensured <em>zero operational disruption</em> at go-live and mitigated data integrity risks across legacy system transitions.</p>
+          <p class="engagement-text">Lead <strong>M&amp;A Integration Work</strong>, migrating 4,000+ Human Capital records via API during active client acquisitions while owning data validation and conversion end to end. Ensure <em>Zero Operational Disruption</em> at go-live and mitigate data integrity risks across legacy system transitions.</p>
         </li>
         <li class="engagement">
-          <p class="engagement-text">Advised HR leadership across 3 long-cycle enterprise implementations on <strong>adoption strategy and organizational change management</strong>, aligning platform capabilities to business goals. Reduced post-launch support escalations by <em>15%</em>.</p>
+          <p class="engagement-text">Advise HR leadership across long-cycle enterprise implementations on <strong>Adoption Strategy and Organizational Change Management</strong>, aligning platform capabilities to business goals. Reduced post-launch support escalations by <em>15%</em>.</p>
         </li>
       </ol>
     </div>
@@ -468,42 +507,32 @@ footer {
 
   <section class="cs-section">
     <div class="container">
-      <div class="cs-section-eyebrow">What I Brought</div>
-      <h2 class="cs-section-title">The shape of the work.</h2>
-      <ul class="owned-list">
-        <li class="owned-item">
-          <div class="owned-item-label">Discovery & Scoping</div>
-          <div class="owned-item-text">Structured client requirements into Customer Requirement Guides, mapped organizational realities to platform capabilities, and set scope before configuration began.</div>
-        </li>
-        <li class="owned-item">
-          <div class="owned-item-label">Executive Advisory</div>
-          <div class="owned-item-text">Worked directly with HR leadership on adoption strategy and change management, aligning platform capabilities to business goals across long-cycle engagements.</div>
-        </li>
-        <li class="owned-item">
-          <div class="owned-item-label">Cross-Functional Delivery</div>
-          <div class="owned-item-text">Partnered with integration engineers, project managers, and product teams to prioritize work, resolve testing gaps, and keep client roadmaps on track.</div>
-        </li>
-        <li class="owned-item">
-          <div class="owned-item-label">M&amp;A Integration</div>
-          <div class="owned-item-text">Owned data validation, API migration, and conversion during active acquisitions, ensuring zero operational disruption at go-live across legacy system transitions.</div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="cs-section">
-    <div class="container">
-      <div class="cs-section-eyebrow">Context</div>
-      <h2 class="cs-section-title">Industries and tools.</h2>
-      <div class="stack-chips">
-        <span class="stack-chip">Enterprise SaaS</span>
-        <span class="stack-chip">HCM &amp; Payroll</span>
-        <span class="stack-chip">M&amp;A Integration</span>
-        <span class="stack-chip">JIRA</span>
-        <span class="stack-chip">API Data Migration</span>
-        <span class="stack-chip">UAT</span>
-        <span class="stack-chip">Change Management</span>
-        <span class="stack-chip">SAFe</span>
+      <h2 class="cs-section-title cs-section-title-standalone">Industries and Tools</h2>
+      <div class="mini-tile-grid">
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1F3D6F 0%, #0F1F3A 100%); --mini-shadow: rgba(31, 61, 111, 0.4);">
+          <span class="mini-tile-text">Enterprise SaaS</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #006548 0%, #003528 100%); --mini-shadow: rgba(0, 101, 72, 0.4);">
+          <span class="mini-tile-text">HCM &amp; Payroll</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #8B2C3D 0%, #4A1521 100%); --mini-shadow: rgba(139, 44, 61, 0.4);">
+          <span class="mini-tile-text">M&amp;A Integration</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1F6F5C 0%, #0D3A2F 100%); --mini-shadow: rgba(31, 111, 92, 0.4);">
+          <span class="mini-tile-text">JIRA</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #C8853A 0%, #6F4318 100%); --mini-shadow: rgba(200, 133, 58, 0.4);">
+          <span class="mini-tile-text">API Data Migration</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #C04A2B 0%, #7A2E1A 100%); --mini-shadow: rgba(192, 74, 43, 0.4);">
+          <span class="mini-tile-text">UAT</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #B0353E 0%, #5C1A1F 100%); --mini-shadow: rgba(176, 53, 62, 0.4);">
+          <span class="mini-tile-text">Change Management</span>
+        </div>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #5C3A8A 0%, #2E1D45 100%); --mini-shadow: rgba(92, 58, 138, 0.4);">
+          <span class="mini-tile-text">SAFe</span>
+        </div>
       </div>
     </div>
   </section>
@@ -511,9 +540,9 @@ footer {
   <section class="visit-cta">
     <div class="container">
       <div class="visit-card">
-        <h2 class="visit-title">Let's <em>talk.</em></h2>
-        <p class="visit-sub">Looking for a consultant who has owned the full engagement, from the first stakeholder conversation through go-live and adoption. Reach out and let's get into it.</p>
-        <a href="mailto:purvakulkarni20@gmail.com" class="btn btn-primary">
+        <h2 class="visit-title">Let's <em>Talk</em></h2>
+        <p class="visit-sub">Looking for a consultant who owns the full engagement, from the first stakeholder conversation through go-live and adoption. Reach out and let's get into it.</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=purvakulkarni20@gmail.com" target="_blank" rel="noopener" class="btn btn-primary">
           Get In Touch
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
