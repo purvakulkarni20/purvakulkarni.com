@@ -818,6 +818,178 @@ section { padding: 28px 0; }
 }
 .chip.cert { font-size: 12px; }
 
+/* ============ ABOUT OFF-CLOCK LABEL ============ */
+.about-offclock-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 24px;
+  margin-bottom: 6px;
+}
+
+/* ============ LANGUAGES TILES (Apple Music style) ============ */
+#languages { padding: 56px 0 24px; }
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.lang-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+  cursor: default;
+}
+.lang-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--tile-grad);
+  z-index: 0;
+}
+.lang-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 28% 22%, rgba(255,255,255,0.22), transparent 55%);
+  z-index: 1;
+}
+.lang-tile:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 22px 48px var(--tile-shadow);
+}
+.lang-tile > * { position: relative; z-index: 2; }
+.lang-tile-script {
+  font-size: 26px;
+  color: rgba(255,255,255,0.92);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.lang-tile-name {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+.lang-tile-level {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  background: rgba(0,0,0,0.32);
+  padding: 6px 10px;
+  border-radius: 100px;
+  align-self: flex-start;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============ CERTIFICATIONS TILES ============ */
+#certifications { padding: 24px 0 56px; }
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.cert-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.3s ease;
+  cursor: default;
+}
+.cert-tile::after {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--cert-glow, rgba(212,184,118,0.18)), transparent 60%);
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.35s ease;
+}
+.cert-tile:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-strong);
+  box-shadow: 0 22px 48px rgba(212,184,118,0.18);
+}
+.cert-tile:hover::after { opacity: 1; }
+.cert-logo {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--cert-logo-bg, #FFFFFF);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.cert-logo svg { width: 38px; height: 38px; }
+.cert-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+.cert-issuer {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+}
+.cert-progress {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  background: var(--gold);
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@media (max-width: 760px) {
+  .lang-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cert-grid { grid-template-columns: 1fr; }
+}
+
 /* ============ EDUCATION ============ */
 .edu-grid {
   display: grid;
@@ -1125,9 +1297,9 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
     </a>
     <div class="nav-links">
       <a href="#work">Work</a>
+      <a href="meal-melody.html">Meal Melody</a>
+      <a href="consulting.html">Consulting</a>
       <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#toolkit">Toolkit</a>
       <a href="#contact" class="nav-cta">Get in Touch</a>
     </div>
   </div>
@@ -1138,10 +1310,6 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
   <!-- HERO -->
   <header class="hero">
     <div class="container">
-      <div class="status">
-        <span class="status-dot"></span>
-        Open to Product Manager roles
-      </div>
       <h1>
         Purva
         <span class="em">Kulkarni</span>
@@ -1150,9 +1318,9 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
         I turn complex problems into products people <em>actually</em> want to use.
       </p>
       <div class="hero-meta">
-        <span>AI-Empowered Product Manager</span>
-        <span>Founder, Meal Melody</span>
-        <span>Atlanta, GA</span>
+        <span>SAFe AI Empowered Product Manager</span>
+        <span>Founder at Meal Melody</span>
+        <span>Implementation Solutions Consultant</span>
       </div>
       <div class="hero-actions">
         <a href="#work" class="btn btn-primary">
@@ -1168,8 +1336,8 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
   <section id="work">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Featured <span class="accent">Project</span></h2>
-        <a href="#projects" class="see-all">More Projects →</a>
+        <h2 class="section-title">Featured <span class="accent">Work</span></h2>
+        <a href="#projects" class="see-all">More Work →</a>
       </div>
 
       <article class="featured-card">
@@ -1356,6 +1524,10 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
           <p>
             I'm drawn to teams where product is taken seriously, where work moves with urgency, and where the outcome actually matters to the person using it.
           </p>
+          <p class="about-offclock-label">Off the Clock</p>
+          <p>
+            Outside work, I cook a lot, watch Formula 1, play padel and tennis, follow football (soccer), travel when I can, and use yoga to reset. The mix probably says more about how I think than any resume bullet does.
+          </p>
         </div>
       </div>
 
@@ -1464,27 +1636,161 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
           </div>
         </div>
 
-        <div class="tk-group">
-          <div class="tk-group-label">Certifications</div>
-          <div class="chip-row">
-            <span class="chip cert">AI-Empowered SAFe® PO/PM</span>
-            <span class="chip cert">Microsoft AI Product Manager Professional (in progress)</span>
-            <span class="chip cert">IBM Enterprise Design Thinking Practitioner</span>
-            <span class="chip cert">AWS Academy Graduate</span>
-            <span class="chip cert">UKG Customer Experience Professional</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Languages</h2>
+      </div>
+
+      <div class="lang-grid">
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #C04A2B 0%, #7A2E1A 100%); --tile-shadow: rgba(192, 74, 43, 0.45);">
+          <div class="lang-tile-script">हिंदी</div>
+          <div>
+            <div class="lang-tile-name">Hindi</div>
+            <span class="lang-tile-level">Native</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F6F5C 0%, #0D3A2F 100%); --tile-shadow: rgba(31, 111, 92, 0.45);">
+          <div class="lang-tile-script">اُردُو</div>
+          <div>
+            <div class="lang-tile-name">Urdu</div>
+            <span class="lang-tile-level">Native</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #8B2C3D 0%, #4A1521 100%); --tile-shadow: rgba(139, 44, 61, 0.45);">
+          <div class="lang-tile-script">मराठी</div>
+          <div>
+            <div class="lang-tile-name">Marathi</div>
+            <span class="lang-tile-level">Native</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F3D6F 0%, #0F1F3A 100%); --tile-shadow: rgba(31, 61, 111, 0.45);">
+          <div class="lang-tile-script">English</div>
+          <div>
+            <div class="lang-tile-name">English</div>
+            <span class="lang-tile-level">Native</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #B0353E 0%, #5C1A1F 100%); --tile-shadow: rgba(176, 53, 62, 0.45);">
+          <div class="lang-tile-script">Türkçe</div>
+          <div>
+            <div class="lang-tile-name">Turkish</div>
+            <span class="lang-tile-level">Working</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F7D5C 0%, #0E3F2E 100%); --tile-shadow: rgba(31, 125, 92, 0.45);">
+          <div class="lang-tile-script">Português</div>
+          <div>
+            <div class="lang-tile-name">Portuguese</div>
+            <span class="lang-tile-level">Basic</span>
+          </div>
+        </div>
+        <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #C8853A 0%, #6F4318 100%); --tile-shadow: rgba(200, 133, 58, 0.45);">
+          <div class="lang-tile-script">Español</div>
+          <div>
+            <div class="lang-tile-name">Spanish</div>
+            <span class="lang-tile-level">Basic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Certifications</h2>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-tile" style="--cert-glow: rgba(255, 102, 102, 0.22);">
+          <div class="cert-logo" style="--cert-logo-bg: #1A1A1A;">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="20" width="52" height="24" rx="3" fill="#EE3124"/>
+              <text x="32" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">SAFe</text>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">AI-Empowered SAFe&reg; Product Owner / Product Manager</div>
+            <div class="cert-issuer">Scaled Agile</div>
           </div>
         </div>
 
-        <div class="tk-group">
-          <div class="tk-group-label">Languages</div>
-          <div class="chip-row">
-            <span class="chip">Hindi · native</span>
-            <span class="chip">Urdu · native</span>
-            <span class="chip">Marathi · native</span>
-            <span class="chip">English · native</span>
-            <span class="chip">Turkish · working</span>
-            <span class="chip">Portuguese · basic</span>
-            <span class="chip">Spanish · basic</span>
+        <div class="cert-tile" style="--cert-glow: rgba(0, 164, 239, 0.22);">
+          <div class="cert-logo" style="--cert-logo-bg: #FFFFFF;">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="8" width="22" height="22" fill="#F35325"/>
+              <rect x="34" y="8" width="22" height="22" fill="#81BC06"/>
+              <rect x="8" y="34" width="22" height="22" fill="#05A6F0"/>
+              <rect x="34" y="34" width="22" height="22" fill="#FFBA08"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">AI Product Manager Professional<span class="cert-progress">In Progress</span></div>
+            <div class="cert-issuer">Microsoft</div>
+          </div>
+        </div>
+
+        <div class="cert-tile" style="--cert-glow: rgba(15, 98, 254, 0.22);">
+          <div class="cert-logo" style="--cert-logo-bg: #FFFFFF;">
+            <svg viewBox="0 0 64 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="#0F62FE">
+                <rect x="4" y="6" width="14" height="2"/>
+                <rect x="4" y="10" width="14" height="2"/>
+                <rect x="4" y="14" width="14" height="2"/>
+                <rect x="4" y="18" width="14" height="2"/>
+                <rect x="4" y="22" width="14" height="2"/>
+                <rect x="4" y="26" width="14" height="2"/>
+                <rect x="25" y="6" width="14" height="2"/>
+                <rect x="25" y="10" width="14" height="2"/>
+                <rect x="25" y="14" width="14" height="2"/>
+                <rect x="25" y="18" width="14" height="2"/>
+                <rect x="25" y="22" width="14" height="2"/>
+                <rect x="25" y="26" width="14" height="2"/>
+                <rect x="46" y="6" width="14" height="2"/>
+                <rect x="46" y="10" width="14" height="2"/>
+                <rect x="46" y="14" width="14" height="2"/>
+                <rect x="46" y="18" width="14" height="2"/>
+                <rect x="46" y="22" width="14" height="2"/>
+                <rect x="46" y="26" width="14" height="2"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">Enterprise Design Thinking Practitioner</div>
+            <div class="cert-issuer">IBM</div>
+          </div>
+        </div>
+
+        <div class="cert-tile" style="--cert-glow: rgba(255, 153, 0, 0.22);">
+          <div class="cert-logo" style="--cert-logo-bg: #232F3E;">
+            <svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <text x="32" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">aws</text>
+              <path d="M16 28 Q32 36 48 28" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">AWS Academy Graduate</div>
+            <div class="cert-issuer">Amazon Web Services</div>
+          </div>
+        </div>
+
+        <div class="cert-tile" style="--cert-glow: rgba(127, 184, 127, 0.22);">
+          <div class="cert-logo" style="--cert-logo-bg: #006548;">
+            <svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <text x="32" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">UKG</text>
+              <line x1="22" y1="30" x2="42" y2="30" stroke="#7FB87F" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">Customer Experience Professional</div>
+            <div class="cert-issuer">UKG</div>
           </div>
         </div>
       </div>
@@ -1546,20 +1852,16 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
 
           <aside class="contact-aside">
             <div class="aside-block">
-              <div class="aside-label">Reach Me</div>
-              <div class="aside-text">
-                <a href="mailto:purvakulkarni20@gmail.com" style="color:var(--gold);">purvakulkarni20@gmail.com</a>
-              </div>
-            </div>
-            <div class="aside-block">
-              <div class="aside-label">Off the Clock</div>
-              <div class="aside-text">
-                <em>Cooking, Formula 1,</em> padel, tennis, football, and travel.
-              </div>
+              <div class="aside-label">Open To</div>
+              <div class="aside-text">Product Management &middot; Consulting</div>
             </div>
             <div class="aside-block">
               <div class="aside-label">Based In</div>
               <div class="aside-text">Atlanta, GA</div>
+            </div>
+            <div class="aside-block">
+              <div class="aside-label">Reply Time</div>
+              <div class="aside-text">Typically within a day</div>
             </div>
           </aside>
         </div>

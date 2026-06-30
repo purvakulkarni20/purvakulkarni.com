@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consulting Work | Purva Kulkarni</title>
+<meta name="description" content="Three years inside one of the largest HCM platforms in the world, leading 40+ enterprise SaaS implementation engagements end to end. Selected consulting work by Purva Kulkarni." />
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Purva Kulkarni" />
+<meta property="og:title" content="Consulting Work | Purva Kulkarni" />
+<meta property="og:description" content="Selected consulting engagements: enterprise SaaS implementation, HCM and payroll, M&A integration, executive advisory." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0A0F1F;
+  --surface: #141B30;
+  --surface-2: #1D2640;
+  --surface-3: #252F4D;
+  --border: rgba(212, 184, 118, 0.14);
+  --border-strong: rgba(212, 184, 118, 0.3);
+  --border-soft: rgba(245, 240, 226, 0.08);
+  --text: #F5F0E2;
+  --text-2: rgba(245, 240, 226, 0.7);
+  --text-3: rgba(245, 240, 226, 0.5);
+  --text-4: rgba(245, 240, 226, 0.35);
+  --gold: #D4B876;
+  --gold-bright: #E5C988;
+  --gold-dim: #A88845;
+  --navy: #1B2A4E;
+  --navy-deep: #0F1B36;
+  --max: 1080px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% -10%, rgba(212, 184, 118, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 0% 40%, rgba(27, 42, 78, 0.45), transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+::selection { background: var(--gold); color: var(--navy-deep); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(10, 15, 31, 0.72);
+  border-bottom: 1px solid var(--border-soft);
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.back-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+.back-link:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-deep);
+  background: var(--gold);
+  padding: 9px 18px;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+
+/* HERO */
+.cs-hero { padding: 56px 0 32px; text-align: center; }
+.cs-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 7px 16px;
+  background: rgba(212, 184, 118, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.cs-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.cs-title em { font-style: normal; color: var(--gold); }
+.cs-tagline {
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 720px;
+  margin: 0 auto 36px;
+  font-weight: 300;
+}
+.cs-tagline em { color: var(--gold); font-style: italic; }
+.cs-hero-actions { display: inline-flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-deep);
+  box-shadow: 0 8px 24px rgba(212, 184, 118, 0.18);
+}
+.btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 184, 118, 0.28); }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border-soft);
+}
+.btn-secondary:hover { background: var(--surface-2); border-color: var(--border); }
+
+/* OUTCOMES STRIP */
+.outcomes { padding: 32px 0; }
+.outcomes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.outcome-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 26px 24px;
+}
+.outcome-num {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.outcome-label {
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section.cs-section { padding: 28px 0; }
+.cs-section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.cs-section-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.cs-section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 2.8vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.cs-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 36px 40px;
+}
+.cs-card p { font-size: 16px; line-height: 1.7; color: var(--text-2); }
+.cs-card p + p { margin-top: 14px; }
+.cs-card p strong { color: var(--text); font-weight: 600; }
+
+/* ENGAGEMENT LIST (numbered) */
+.engagements {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  counter-reset: eng;
+}
+.engagement {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 26px 30px 26px 78px;
+  position: relative;
+  transition: all 0.2s ease;
+  counter-increment: eng;
+}
+.engagement:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+  transform: translateY(-2px);
+}
+.engagement::before {
+  content: counter(eng, decimal-leading-zero);
+  position: absolute;
+  left: 28px;
+  top: 26px;
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.engagement-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.engagement-text strong { color: var(--text); font-weight: 600; }
+.engagement-text em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+/* OWNED LIST (for What I Brought) */
+.owned-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.owned-item {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 22px 24px;
+}
+.owned-item-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.owned-item-text { font-size: 14.5px; line-height: 1.55; color: var(--text-2); }
+
+/* STACK */
+.stack-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.stack-chip {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  color: var(--text);
+}
+
+/* VISIT CTA */
+.visit-cta { padding: 48px 0 80px; }
+.visit-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 70%);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.visit-card::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 184, 118, 0.18), transparent 60%);
+  pointer-events: none;
+}
+.visit-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+  position: relative;
+}
+.visit-title em { font-style: normal; color: var(--gold); }
+.visit-sub {
+  font-size: 16px;
+  color: var(--text-2);
+  margin-bottom: 28px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-4);
+  font-weight: 500;
+  border-top: 1px solid var(--border-soft);
+}
+
+@media (max-width: 760px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 12px 20px; }
+  .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+  .owned-list { grid-template-columns: 1fr; }
+  .engagement { padding: 22px 22px 22px 62px; }
+  .engagement::before { left: 22px; top: 22px; }
+  .cs-card { padding: 28px 24px; }
+  .visit-card { padding: 36px 24px; }
+  footer { flex-direction: column; gap: 12px; padding: 24px 20px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+    <a href="mailto:purvakulkarni20@gmail.com" class="nav-cta">
+      Get In Touch
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <header class="cs-hero">
+    <div class="container">
+      <div class="cs-hero-tag">Implementation & Strategy · 2023 to 2026</div>
+      <h1 class="cs-title">Consulting <em>Work</em></h1>
+      <p class="cs-tagline">
+        Three years inside one of the largest <em>Human Capital Management</em> platforms in the world, leading 40+ enterprise SaaS implementation engagements end to end. Discovery through go-live, with executive advisory and M&amp;A integration along the way.
+      </p>
+      <div class="cs-hero-actions">
+        <a href="mailto:purvakulkarni20@gmail.com" class="btn btn-primary">
+          Get In Touch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="outcomes">
+    <div class="container">
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <div class="outcome-num">40+</div>
+          <div class="outcome-label">Enterprise SaaS engagements led</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">100%</div>
+          <div class="outcome-label">On-time delivery across all clients</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">4,000+</div>
+          <div class="outcome-label">HCM records migrated during active M&amp;A</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">30%</div>
+          <div class="outcome-label">Faster issue resolution across the portfolio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">Context</div>
+      <h2 class="cs-section-title">Translating client business goals into shipped enterprise software.</h2>
+      <div class="cs-card">
+        <p>Three years embedded in one of the largest Human Capital Management platforms in the world, I led implementation consulting engagements end to end. The work was simple to describe and difficult to do well. Take a client's organizational reality, structure it into a working configuration, and steer it through engineering until it went live and stayed live.</p>
+        <p>Engagements spanned discovery, scoping, stakeholder advisory, M&amp;A integration, and post-launch adoption. Most ran concurrently. Every client had a different version of the same problem. How do you get your operations onto a system that does not yet know how you work?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">Selected Engagements</div>
+      <h2 class="cs-section-title">Five things that defined the work.</h2>
+      <ol class="engagements">
+        <li class="engagement">
+          <p class="engagement-text">Led <strong>end-to-end client engagements</strong> for 40+ enterprise SaaS implementations simultaneously, owning discovery, scoping, stakeholder alignment, UAT, data migration, and go-live. Achieved <em>100% on-time delivery</em> across all client accounts.</p>
+        </li>
+        <li class="engagement">
+          <p class="engagement-text">Translated complex client business requirements into structured Customer Requirement Guides and configuration specifications, serving as the <strong>primary advisor between executive stakeholders and engineering</strong>. Reduced configuration errors by <em>25%</em> and accelerated client time-to-adoption.</p>
+        </li>
+        <li class="engagement">
+          <p class="engagement-text">Drove cross-functional collaboration with integration engineers, project managers, and product teams to triage feature gaps, prioritize enhancement requests, and resolve testing discrepancies. Improved issue resolution speed by <em>30%</em> and shaped product roadmap based on direct client feedback.</p>
+        </li>
+        <li class="engagement">
+          <p class="engagement-text">Led <strong>M&amp;A integration work</strong>, migrating 4,000+ Human Capital records via API during active client acquisitions while owning data validation and conversion end to end. Ensured <em>zero operational disruption</em> at go-live and mitigated data integrity risks across legacy system transitions.</p>
+        </li>
+        <li class="engagement">
+          <p class="engagement-text">Advised HR leadership across 3 long-cycle enterprise implementations on <strong>adoption strategy and organizational change management</strong>, aligning platform capabilities to business goals. Reduced post-launch support escalations by <em>15%</em>.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">What I Brought</div>
+      <h2 class="cs-section-title">The shape of the work.</h2>
+      <ul class="owned-list">
+        <li class="owned-item">
+          <div class="owned-item-label">Discovery & Scoping</div>
+          <div class="owned-item-text">Structured client requirements into Customer Requirement Guides, mapped organizational realities to platform capabilities, and set scope before configuration began.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">Executive Advisory</div>
+          <div class="owned-item-text">Worked directly with HR leadership on adoption strategy and change management, aligning platform capabilities to business goals across long-cycle engagements.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">Cross-Functional Delivery</div>
+          <div class="owned-item-text">Partnered with integration engineers, project managers, and product teams to prioritize work, resolve testing gaps, and keep client roadmaps on track.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">M&amp;A Integration</div>
+          <div class="owned-item-text">Owned data validation, API migration, and conversion during active acquisitions, ensuring zero operational disruption at go-live across legacy system transitions.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">Context</div>
+      <h2 class="cs-section-title">Industries and tools.</h2>
+      <div class="stack-chips">
+        <span class="stack-chip">Enterprise SaaS</span>
+        <span class="stack-chip">HCM &amp; Payroll</span>
+        <span class="stack-chip">M&amp;A Integration</span>
+        <span class="stack-chip">JIRA</span>
+        <span class="stack-chip">API Data Migration</span>
+        <span class="stack-chip">UAT</span>
+        <span class="stack-chip">Change Management</span>
+        <span class="stack-chip">SAFe</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit-cta">
+    <div class="container">
+      <div class="visit-card">
+        <h2 class="visit-title">Let's <em>talk.</em></h2>
+        <p class="visit-sub">Looking for a consultant who has owned the full engagement, from the first stakeholder conversation through go-live and adoption. Reach out and let's get into it.</p>
+        <a href="mailto:purvakulkarni20@gmail.com" class="btn btn-primary">
+          Get In Touch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+
+      <footer>
+        <span>&copy; 2026 Purva Kulkarni</span>
+        <a href="index.html" style="color:var(--gold);">Back to Home &rarr;</a>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
