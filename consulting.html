@@ -299,7 +299,7 @@ section.cs-section { padding: 28px 0; }
 /* MINI TILES (Apple Music style, compact) */
 .mini-tile-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 .mini-tile {
@@ -433,7 +433,7 @@ footer {
   .engagement::before { left: 22px; top: 22px; }
   .cs-card { padding: 28px 24px; }
   .visit-card { padding: 36px 24px; }
-  .mini-tile-grid { grid-template-columns: repeat(2, 1fr); }
+  .mini-tile-grid { grid-template-columns: repeat(3, 1fr); }
   footer { flex-direction: column; gap: 12px; padding: 24px 20px; text-align: center; }
 }
 </style>
@@ -610,14 +610,27 @@ footer {
           <span class="mini-tile-text">Change Management</span>
         </div>
 
-        <div class="mini-tile mini-tile-safe" style="--mini-grad: linear-gradient(135deg, #1A2F4E 0%, #0A1830 100%); --mini-shadow: rgba(238, 49, 36, 0.45);">
-          <div class="mini-tile-icon mini-tile-icon-wide">
-            <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <text x="32" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900" fill="#EE3124" letter-spacing="-0.5">SAFe</text>
-              <circle cx="50" cy="13" r="3" fill="#EE3124"/>
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1E5E8E 0%, #0F2F4A 100%); --mini-shadow: rgba(30, 94, 142, 0.45);">
+          <div class="mini-tile-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="24" cy="12" rx="16" ry="5"/>
+              <path d="M8 12v8c0 2.8 7.2 5 16 5s16-2.2 16-5v-8"/>
+              <path d="M8 22v8c0 2.8 7.2 5 16 5s16-2.2 16-5v-8"/>
+              <path d="M8 32v6c0 2.8 7.2 5 16 5s16-2.2 16-5v-6"/>
             </svg>
           </div>
-          <span class="mini-tile-text">SAFe</span>
+          <span class="mini-tile-text">SQL</span>
+        </div>
+
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #D83B01 0%, #7A2104 100%); --mini-shadow: rgba(216, 59, 1, 0.45);">
+          <div class="mini-tile-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M30 6 L8 12 L8 36 L30 42 L30 6 Z" fill="#FFFFFF"/>
+              <path d="M30 6 L42 10 L42 38 L30 42 L30 6 Z" fill="rgba(255,255,255,0.55)"/>
+              <text x="19" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="900" fill="#D83B01">O</text>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Microsoft Office</span>
         </div>
       </div>
     </div>
