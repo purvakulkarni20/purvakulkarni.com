@@ -296,23 +296,23 @@ section.cs-section { padding: 28px 0; }
 /* STANDALONE TITLE (no eyebrow above) */
 .cs-section-title-standalone { margin-top: 4px; }
 
-/* MINI TILES (Apple Music style, smaller) */
+/* MINI TILES (Apple Music style, compact) */
 .mini-tile-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 .mini-tile {
   position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 14px;
+  aspect-ratio: 16 / 11;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 14px 16px;
+  gap: 8px;
+  padding: 12px 10px 12px;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
   cursor: default;
 }
@@ -331,18 +331,22 @@ section.cs-section { padding: 28px 0; }
   z-index: 1;
 }
 .mini-tile:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 18px 36px var(--mini-shadow);
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 16px 32px var(--mini-shadow);
 }
 .mini-tile-icon {
   position: relative;
   z-index: 2;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mini-tile-icon-wide {
+  width: 56px;
+  height: 28px;
 }
 .mini-tile-icon svg {
   width: 100%;
@@ -356,12 +360,12 @@ section.cs-section { padding: 28px 0; }
   position: relative;
   z-index: 2;
   font-family: 'Manrope', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
+  font-weight: 800;
+  font-size: 14.5px;
   color: #FFFFFF;
   text-align: center;
-  letter-spacing: 0.01em;
-  line-height: 1.25;
+  letter-spacing: 0.005em;
+  line-height: 1.2;
 }
 
 /* VISIT CTA */
@@ -564,8 +568,9 @@ footer {
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #0052CC 0%, #002A6E 100%); --mini-shadow: rgba(0, 82, 204, 0.45);">
           <div class="mini-tile-icon">
             <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M24 4 L42 22 L24 40 L6 22 Z" fill="#FFFFFF" opacity="0.95"/>
-              <path d="M24 4 L34 14 L24 24 L14 14 Z" fill="#2684FF"/>
+              <path d="M24 4 L42 22 L24 40 L6 22 Z" fill="#2684FF"/>
+              <path d="M24 14 L36 26 L24 38 L12 26 Z" fill="#0052CC"/>
+              <path d="M24 14 L24 38 L12 26 Z" fill="#2684FF" opacity="0.6"/>
             </svg>
           </div>
           <span class="mini-tile-text">JIRA</span>
@@ -605,12 +610,11 @@ footer {
           <span class="mini-tile-text">Change Management</span>
         </div>
 
-        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #5C3A8A 0%, #2E1D45 100%); --mini-shadow: rgba(92, 58, 138, 0.45);">
-          <div class="mini-tile-icon">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <polygon points="24,7 42,40 6,40" fill="#FFFFFF" opacity="0.95"/>
-              <polygon points="24,7 33,24 15,24" fill="rgba(255,255,255,0.55)"/>
-              <polygon points="24,7 28,15 20,15" fill="rgba(255,255,255,0.85)"/>
+        <div class="mini-tile mini-tile-safe" style="--mini-grad: linear-gradient(135deg, #1A2F4E 0%, #0A1830 100%); --mini-shadow: rgba(238, 49, 36, 0.45);">
+          <div class="mini-tile-icon mini-tile-icon-wide">
+            <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <text x="32" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900" fill="#EE3124" letter-spacing="-0.5">SAFe</text>
+              <circle cx="50" cy="13" r="3" fill="#EE3124"/>
             </svg>
           </div>
           <span class="mini-tile-text">SAFe</span>
