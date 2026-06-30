@@ -818,15 +818,53 @@ section { padding: 28px 0; }
 }
 .chip.cert { font-size: 12px; }
 
-/* ============ ABOUT OFF-CLOCK LABEL ============ */
-.about-offclock-label {
+/* ============ ABOUT SECTION LABELS + LIST ============ */
+.about-offclock-label,
+.about-section-label {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-top: 24px;
-  margin-bottom: 6px;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.about-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+.about-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.about-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 184, 118, 0.18);
+}
+@media (min-width: 720px) {
+  .about-list { grid-template-columns: 1fr 1fr; gap: 10px 28px; }
 }
 
 /* ============ LANGUAGES TILES (Apple Music style) ============ */
@@ -1512,21 +1550,35 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
 
       <div class="about-card">
         <div class="about-lead">
-          Built at the intersection of <span class="accent">business complexity</span> and <span class="accent">user need.</span>
+          I turn complex problems into products people <span class="accent">actually</span> want to use.
         </div>
         <div class="about-body">
           <p>
-            I've spent three years inside one of the largest HCM platforms in the world, owning <strong>40+ enterprise implementations</strong> simultaneously: defining requirements, closing capability gaps, and acting as de facto product owner between client needs and engineering.
+            As a <strong>SAFe&reg; AI Product Manager and Implementation Solutions Consultant</strong>, I have built my career at the intersection of business complexity and user need, turning messy requirements into products that actually deliver. At UKG, that means owning <strong>40+ enterprise implementations</strong> simultaneously, defining requirements, closing capability gaps, and influencing the roadmap for one of the largest HCM platforms in the world.
           </p>
           <p>
-            Then I built <strong>Meal Melody</strong> solo: wrote the PRDs, designed the UX, shipped multilingual voice-enabled AI features, and used beta feedback to drive a 45% lift in daily active usage.
+            Then I decided to build something of my own.
           </p>
           <p>
-            I'm drawn to teams where product is taken seriously, where work moves with urgency, and where the outcome actually matters to the person using it.
+            <strong>Meal Melody</strong> is an AI-powered app that eliminates meal decision fatigue. You scan your pantry or fridge, and it instantly tells you what you can cook from what you already have, across 50+ global cuisines, with a personal AI chef to guide you step by step. I took it from idea to launch solo, wrote the PRDs, designed the UX, shipped AI-powered recipe customization with multilingual and voice capabilities, and used feedback from 20+ beta users to drive a <strong>45% increase in daily active usage</strong>.
           </p>
-          <p class="about-offclock-label">Off the Clock</p>
           <p>
-            Outside work, I cook a lot, watch Formula 1, play padel and tennis, follow football (soccer), travel when I can, and use yoga to reset. The mix probably says more about how I think than any resume bullet does.
+            I am drawn to companies where product is taken seriously, where teams move with urgency, and where the work actually matters to the end user.
+          </p>
+
+          <p class="about-section-label">What I Bring to the Table</p>
+          <ul class="about-list">
+            <li>Product thinking focused on problem definition, solution design, and outcomes</li>
+            <li>Defining product requirements to guide feature development</li>
+            <li>Driving continuous value delivery through user insights and feature thinking</li>
+            <li>Prioritization and tradeoff decision-making across product constraints</li>
+            <li>Building scalable user-centric products within enterprise value streams</li>
+            <li>Data-informed product thinking</li>
+          </ul>
+
+          <p class="about-section-label">Off the Clock</p>
+          <p>
+            Outside of work I recharge through yoga, traveling, and playing padel and tennis, along with watching football (soccer) and Formula 1. I have always been drawn to how teams build momentum and execute under pressure, and that mindset follows me into everything I work on.
           </p>
         </div>
       </div>
