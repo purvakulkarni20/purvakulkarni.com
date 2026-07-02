@@ -1105,92 +1105,98 @@ section { padding: 28px 0; }
 #certifications { padding: 24px 0 56px; }
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.cert-grid > .cert-tile:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 5px);
+  justify-self: center;
 }
 .cert-tile {
   position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 18px;
-  padding: 24px;
+  min-height: 70px;
+  border-radius: 12px;
+  padding: 10px 14px 10px 10px;
   background: var(--surface);
   border: 1px solid var(--border-soft);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.3s ease;
   cursor: default;
 }
 .cert-tile::after {
   content: '';
   position: absolute;
-  top: -80px;
-  right: -60px;
-  width: 220px;
-  height: 220px;
+  top: -40px;
+  right: -30px;
+  width: 140px;
+  height: 140px;
   background: radial-gradient(circle, var(--cert-glow, rgba(212,184,118,0.18)), transparent 60%);
   pointer-events: none;
   opacity: 0.55;
   transition: opacity 0.35s ease;
 }
 .cert-tile:hover {
-  transform: translateY(-8px);
+  transform: translateY(-3px);
   border-color: var(--border-strong);
-  box-shadow: 0 22px 48px rgba(212,184,118,0.18);
+  box-shadow: 0 12px 28px rgba(212,184,118,0.18);
 }
 .cert-tile:hover::after { opacity: 1; }
 .cert-logo {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--cert-logo-bg, #FFFFFF);
-  margin-bottom: 16px;
   position: relative;
   z-index: 2;
   flex-shrink: 0;
 }
-.cert-logo svg { width: 38px; height: 38px; }
-.cert-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.4;
-  margin-bottom: 8px;
+.cert-logo svg { width: 34px; height: 34px; }
+.cert-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
   position: relative;
   z-index: 2;
 }
+.cert-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+}
 .cert-issuer {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  position: relative;
-  z-index: 2;
 }
 .cert-progress {
   display: inline-block;
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--navy-deep);
   background: var(--gold);
-  padding: 3px 8px;
+  padding: 3px 7px;
   border-radius: 100px;
-  margin-left: 8px;
+  margin-left: 6px;
   vertical-align: middle;
 }
 
 @media (max-width: 760px) {
-  .lang-grid { grid-template-columns: repeat(3, 1fr); }
-  .cert-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
+  .lang-grid { grid-template-columns: 1fr; }
   .cert-grid { grid-template-columns: 1fr; }
 }
 
@@ -2060,7 +2066,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               <text x="32" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">SAFe</text>
             </svg>
           </div>
-          <div>
+          <div class="cert-body">
             <div class="cert-name">AI-Empowered SAFe&reg; Product Owner / Product Manager</div>
             <div class="cert-issuer">Scaled Agile</div>
           </div>
@@ -2075,7 +2081,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               <rect x="34" y="34" width="22" height="22" fill="#FFBA08"/>
             </svg>
           </div>
-          <div>
+          <div class="cert-body">
             <div class="cert-name">AI Product Manager Professional<span class="cert-progress">In Progress</span></div>
             <div class="cert-issuer">Microsoft</div>
           </div>
@@ -2106,7 +2112,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               </g>
             </svg>
           </div>
-          <div>
+          <div class="cert-body">
             <div class="cert-name">Enterprise Design Thinking Practitioner</div>
             <div class="cert-issuer">IBM</div>
           </div>
@@ -2119,7 +2125,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               <path d="M16 28 Q32 36 48 28" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             </svg>
           </div>
-          <div>
+          <div class="cert-body">
             <div class="cert-name">AWS Academy Graduate</div>
             <div class="cert-issuer">Amazon Web Services</div>
           </div>
@@ -2132,7 +2138,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
               <line x1="22" y1="30" x2="42" y2="30" stroke="#7FB87F" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <div>
+          <div class="cert-body">
             <div class="cert-name">Customer Experience Professional</div>
             <div class="cert-issuer">UKG</div>
           </div>
