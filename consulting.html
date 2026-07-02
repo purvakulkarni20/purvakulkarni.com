@@ -578,17 +578,24 @@ section.cs-section { padding: 28px 0; }
 .mini-tile-scene .anim-contact-2 { animation-delay: 0.8s; }
 .mini-tile-scene .anim-contact-3 { animation-delay: 1.6s; }
 
-/* ServiceNow: ticket card slides through three workflow columns */
-@keyframes anim-ticket-move {
-  0%, 15%   { transform: translateX(0); }
-  33%, 48%  { transform: translateX(30px); }
-  66%, 82%  { transform: translateX(60px); }
-  100%      { transform: translateX(0); }
+/* ServiceNow: brand-mark halo pulses outward */
+@keyframes anim-sn-halo {
+  0%, 100% { transform: scale(0.85); opacity: 0.3; }
+  50%      { transform: scale(1.15); opacity: 0.6; }
 }
-.mini-tile-scene .anim-ticket-move {
+@keyframes anim-sn-halo-2 {
+  0%, 100% { transform: scale(0.75); opacity: 0.55; }
+  50%      { transform: scale(1.05); opacity: 0.85; }
+}
+.mini-tile-scene .anim-sn-halo {
   transform-box: fill-box;
-  transform-origin: left center;
-  animation: anim-ticket-move 3.6s ease-in-out infinite;
+  transform-origin: center;
+  animation: anim-sn-halo 3s ease-in-out infinite;
+}
+.mini-tile-scene .anim-sn-halo-2 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-sn-halo-2 3s ease-in-out 0.4s infinite;
 }
 
 /* Requirements Analysis: highlighter bar slides through requirement rows */
@@ -1075,24 +1082,13 @@ footer {
           <span class="mini-tile-text">Salesforce</span>
         </div>
 
-        <!-- ServiceNow: a support ticket moves through New → In Progress → Resolved -->
+        <!-- ServiceNow: the signature "now" wordmark with a pulsing halo -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #62D84E 0%, #1F5E17 100%); --mini-shadow: rgba(98, 216, 78, 0.45);">
           <div class="mini-tile-scene">
             <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <text x="20" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">NEW</text>
-              <text x="50" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">PROGRESS</text>
-              <text x="80" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">RESOLVED</text>
-              <g fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.55)" stroke-width="1">
-                <rect x="10" y="18" width="20" height="30" rx="2"/>
-                <rect x="40" y="18" width="20" height="30" rx="2"/>
-                <rect x="70" y="18" width="20" height="30" rx="2"/>
-              </g>
-              <g class="anim-ticket-move">
-                <rect x="12" y="24" width="16" height="12" rx="2" fill="#FFDF6B"/>
-                <line x1="14" y1="28" x2="26" y2="28" stroke="rgba(0,0,0,0.35)" stroke-width="0.8"/>
-                <line x1="14" y1="31" x2="24" y2="31" stroke="rgba(0,0,0,0.25)" stroke-width="0.8"/>
-                <circle cx="26" cy="26" r="1.4" fill="#E5573F"/>
-              </g>
+              <circle class="anim-sn-halo" cx="50" cy="30" r="22" fill="rgba(255,255,255,0.18)"/>
+              <circle class="anim-sn-halo-2" cx="50" cy="30" r="16" fill="rgba(255,255,255,0.22)"/>
+              <text x="50" y="37" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="-0.5">now.</text>
             </svg>
           </div>
           <span class="mini-tile-text">ServiceNow</span>
