@@ -818,6 +818,135 @@ section { padding: 28px 0; }
 }
 .chip.cert { font-size: 12px; }
 
+/* ============ TOOLKIT MINI-TILES (Apple Music style scenes) ============ */
+.tk-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.tk-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  padding: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+  cursor: default;
+}
+.tk-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 18%, rgba(255,255,255,0.20), transparent 55%),
+    var(--tk-grad);
+  z-index: 0;
+}
+.tk-tile::after {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,0.24) 50%, transparent 62%);
+  background-size: 220% 100%;
+  background-position: -110% 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: tk-shimmer 5.5s ease-in-out infinite;
+}
+.tk-tile:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 16px 32px var(--tk-shadow);
+}
+.tk-tile:hover::after { animation-duration: 2.4s; }
+@keyframes tk-shimmer {
+  0%, 10% { background-position: -110% 0; }
+  55%, 100% { background-position: 210% 0; }
+}
+.tk-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.tk-scene svg { width: 100%; height: 100%; display: block; }
+.tk-label {
+  position: relative;
+  z-index: 3;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: 0.005em;
+  line-height: 1.15;
+  padding: 22px 8px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
+}
+
+/* Toolkit tile per-icon animations */
+@keyframes tk-pulse {
+  0%, 100% { transform: scale(0.94); opacity: 0.85; }
+  50%      { transform: scale(1.06); opacity: 1; }
+}
+@keyframes tk-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes tk-bob {
+  0%, 100% { transform: translateY(2px); }
+  50%      { transform: translateY(-2px); }
+}
+@keyframes tk-blink {
+  0%, 45%, 100% { opacity: 1; }
+  50%, 60%      { opacity: 0.35; }
+}
+.tk-icon-pulse { transform-box: fill-box; transform-origin: center; animation: tk-pulse 2.4s ease-in-out infinite; }
+.tk-icon-spin  { transform-box: fill-box; transform-origin: center; animation: tk-spin 8s linear infinite; }
+.tk-icon-bob   { transform-box: fill-box; transform-origin: center; animation: tk-bob 2.2s ease-in-out infinite; }
+.tk-icon-blink { transform-box: fill-box; transform-origin: center; animation: tk-blink 1.6s ease-in-out infinite; }
+
+/* stagger entrance */
+.tk-tile { opacity: 0; animation: tk-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes tk-enter {
+  from { opacity: 0; transform: translateY(16px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tk-tile:nth-child(1)  { animation-delay: 0.04s; }
+.tk-tile:nth-child(2)  { animation-delay: 0.10s; }
+.tk-tile:nth-child(3)  { animation-delay: 0.16s; }
+.tk-tile:nth-child(4)  { animation-delay: 0.22s; }
+.tk-tile:nth-child(5)  { animation-delay: 0.28s; }
+.tk-tile:nth-child(6)  { animation-delay: 0.34s; }
+.tk-tile:nth-child(7)  { animation-delay: 0.40s; }
+.tk-tile:nth-child(8)  { animation-delay: 0.46s; }
+.tk-tile:nth-child(9)  { animation-delay: 0.52s; }
+.tk-tile:nth-child(10) { animation-delay: 0.58s; }
+.tk-tile:nth-child(11) { animation-delay: 0.64s; }
+.tk-tile:nth-child(12) { animation-delay: 0.70s; }
+.tk-tile:nth-child(13) { animation-delay: 0.76s; }
+.tk-tile:nth-child(14) { animation-delay: 0.82s; }
+.tk-tile:nth-child(15) { animation-delay: 0.88s; }
+.tk-tile:nth-child(16) { animation-delay: 0.94s; }
+.tk-tile:nth-child(17) { animation-delay: 1.00s; }
+
+@media (max-width: 760px) {
+  .tk-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .tk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tk-tile { opacity: 1; animation: none; }
+  .tk-tile::after { animation: none; }
+  .tk-scene * { animation: none !important; }
+}
+
 /* ============ ABOUT SECTION LABELS + LIST ============ */
 .about-offclock-label,
 .about-section-label {
@@ -1664,28 +1793,218 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
         <h2 class="section-title">Toolkit</h2>
       </div>
 
-      <div class="toolkit-card">
-        <div class="tk-group">
-          <div class="tk-group-label">Tools & Tech</div>
-          <div class="chip-row">
-            <span class="chip">SQL</span>
-            <span class="chip">Python</span>
-            <span class="chip">R</span>
-            <span class="chip">HTML / CSS</span>
-            <span class="chip">JIRA</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">Salesforce</span>
-            <span class="chip">ServiceNow</span>
-            <span class="chip">Oracle</span>
-            <span class="chip">Supabase</span>
-            <span class="chip">Lovable</span>
-            <span class="chip">Cursor</span>
-            <span class="chip">Claude Code</span>
-            <span class="chip">ChatGPT</span>
-            <span class="chip">GitHub</span>
-            <span class="chip">Canva</span>
-            <span class="chip">WordPress</span>
+      <div class="tk-grid">
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1E5E8E 0%, #0F2F4A 100%); --tk-shadow: rgba(30, 94, 142, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="rgba(255,255,255,0.92)" class="tk-icon-pulse">
+                <ellipse cx="50" cy="18" rx="22" ry="5"/>
+                <path d="M28 18v8c0 2.8 9.8 5 22 5s22-2.2 22-5v-8"/>
+                <path d="M28 28v8c0 2.8 9.8 5 22 5s22-2.2 22-5v-8" opacity="0.75"/>
+                <path d="M28 38v6c0 2.8 9.8 5 22 5s22-2.2 22-5v-6" opacity="0.55"/>
+              </g>
+            </svg>
           </div>
+          <span class="tk-label">SQL</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #2C4E8C 0%, #1B3059 100%); --tk-shadow: rgba(44, 78, 140, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <path d="M43 8c-9 0-9 4-9 4v6h9v2H27s-9 0-9 12 8 12 8 12h6v-8s0-8 8-8h14s8 0 8-8v-8s0-4-9-4h-9zm-5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="#3776AB"/>
+                <path d="M57 52c9 0 9-4 9-4v-6h-9v-2h16s9 0 9-12-8-12-8-12h-6v8s0 8-8 8H46s-8 0-8 8v8s0 4 9 4h10zm5-3a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="#FFD53D"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Python</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1F5DAD 0%, #0F2E56 100%); --tk-shadow: rgba(31, 93, 173, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <ellipse cx="50" cy="30" rx="34" ry="22" fill="rgba(255,255,255,0.15)"/>
+                <text x="50" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="900" fill="white" font-style="italic">R</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">R</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #E44D26 0%, #7A2A11 100%); --tk-shadow: rgba(228, 77, 38, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <path d="M22 12 L28 48 L38 52 L48 48 L54 12 Z" fill="#E44D26"/>
+                <path d="M38 47 L46 44 L50 18 L38 18 Z" fill="#F16529"/>
+                <text x="38" y="42" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="white">5</text>
+                <path d="M56 12 L62 48 L72 52 L82 48 L88 12 Z" fill="#264DE4"/>
+                <path d="M72 47 L80 44 L84 18 L72 18 Z" fill="#2965F1"/>
+                <text x="72" y="42" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="white">3</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">HTML / CSS</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #0052CC 0%, #002A6E 100%); --tk-shadow: rgba(0, 82, 204, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-spin">
+                <path d="M50 8 L82 30 L50 52 L18 30 Z" fill="#2684FF"/>
+                <path d="M50 20 L70 34 L50 48 L30 34 Z" fill="#0052CC"/>
+                <path d="M50 20 L50 48 L30 34 Z" fill="#2684FF" opacity="0.5"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">JIRA</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1F3E6F 0%, #0A1F3D 100%); --tk-shadow: rgba(233, 118, 39, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="14" y1="48" x2="86" y2="48" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+              <rect class="tk-icon-pulse" x="22" y="20" width="12" height="28" fill="#E97627" rx="1"/>
+              <rect class="tk-icon-pulse" x="40" y="14" width="12" height="34" fill="#4E88C7" rx="1" style="animation-delay:0.3s"/>
+              <rect class="tk-icon-pulse" x="58" y="24" width="12" height="24" fill="#5EB8A2" rx="1" style="animation-delay:0.6s"/>
+              <rect x="76" y="32" width="6" height="16" fill="rgba(255,255,255,0.55)" rx="1"/>
+            </svg>
+          </div>
+          <span class="tk-label">Tableau</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #00A1E0 0%, #005780 100%); --tk-shadow: rgba(0, 161, 224, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M18 34c-1-6 3-11 8-11 2 0 4 1 6 3 3-5 9-8 15-8 9 0 17 7 17 16 0 1 0 2-1 3 4 1 7 5 7 10 0 6-5 10-11 10H23c-5 0-10-3-10-9 0-4 2-8 6-9 -1-1-1-3-1-5z" fill="rgba(255,255,255,0.95)"/>
+              <g fill="#00A1E0">
+                <g class="tk-icon-pulse">
+                  <circle cx="34" cy="32" r="2.5"/>
+                  <path d="M30 40c0-2 2-4 4-4s4 2 4 4"/>
+                </g>
+                <g class="tk-icon-pulse" style="animation-delay:0.4s">
+                  <circle cx="50" cy="28" r="2.5"/>
+                  <path d="M46 36c0-2 2-4 4-4s4 2 4 4"/>
+                </g>
+                <g class="tk-icon-pulse" style="animation-delay:0.8s">
+                  <circle cx="66" cy="32" r="2.5"/>
+                  <path d="M62 40c0-2 2-4 4-4s4 2 4 4"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Salesforce</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #62D84E 0%, #1F5E17 100%); --tk-shadow: rgba(98, 216, 78, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle class="tk-icon-pulse" cx="50" cy="30" r="24" fill="rgba(255,255,255,0.16)"/>
+              <text x="50" y="34" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="900" fill="white" letter-spacing="-0.35">servicenow.</text>
+            </svg>
+          </div>
+          <span class="tk-label">ServiceNow</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #C74634 0%, #6E1E13 100%); --tk-shadow: rgba(199, 70, 52, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="900" fill="white" letter-spacing="1">ORACLE</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Oracle</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #3ECF8E 0%, #14523A 100%); --tk-shadow: rgba(62, 207, 142, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="tk-icon-pulse" d="M52 6 L28 34 L46 34 L44 54 L68 26 L50 26 L52 6 Z" fill="white"/>
+            </svg>
+          </div>
+          <span class="tk-label">Supabase</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #FF6B9D 0%, #7A2447 100%); --tk-shadow: rgba(255, 107, 157, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="tk-icon-pulse" d="M50 52 C 30 40 20 28 20 20 A 10 10 0 0 1 40 18 C 42 20 46 22 50 22 C 54 22 58 20 60 18 A 10 10 0 0 1 80 20 C 80 28 70 40 50 52 Z" fill="white"/>
+            </svg>
+          </div>
+          <span class="tk-label">Lovable</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1A1A1A 0%, #050505 100%); --tk-shadow: rgba(80, 80, 80, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <path d="M50 8 L82 26 L82 42 L50 24 Z" fill="white"/>
+                <path d="M50 8 L18 26 L18 42 L50 24 Z" fill="rgba(255,255,255,0.55)"/>
+                <path d="M50 24 L82 42 L50 52 Z" fill="rgba(255,255,255,0.8)"/>
+                <path d="M50 24 L18 42 L50 52 Z" fill="rgba(255,255,255,0.35)"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Cursor</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #D97757 0%, #6E3220 100%); --tk-shadow: rgba(217, 119, 87, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-spin" transform="translate(50 30)">
+                <path d="M0 -20 L2 -6 L16 -14 L6 -2 L20 0 L6 2 L16 14 L2 6 L0 20 L-2 6 L-16 14 L-6 2 L-20 0 L-6 -2 L-16 -14 L-2 -6 Z" fill="white"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Claude Code</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #10A37F 0%, #0A5C48 100%); --tk-shadow: rgba(16, 163, 127, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-spin" transform="translate(50 30)">
+                <path d="M0 -18 L15.5 -9 L15.5 9 L0 18 L-15.5 9 L-15.5 -9 Z" fill="none" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M0 -12 L10 -6 L10 6 L0 12 L-10 6 L-10 -6 Z" fill="white" opacity="0.35"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">ChatGPT</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #24292E 0%, #0D1117 100%); --tk-shadow: rgba(36, 41, 46, 0.55);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="tk-icon-pulse" fill="white" d="M50 8c-11 0-20 9-20 20 0 9 6 16 14 19 1 0 1-1 1-1v-4c-6 1-7-3-7-3-1-2-2-3-2-3-2-1 0-1 0-1 2 0 3 2 3 2 2 3 5 2 6 2 0-1 1-3 1-3-4-1-9-2-9-10 0-2 1-4 2-6 0-1-1-3 0-6 0 0 2 0 5 2 1-1 3-1 5-1s4 0 5 1c3-2 5-2 5-2 1 3 0 5 0 6 1 2 2 4 2 6 0 8-5 9-9 10 1 1 1 2 1 3v5s0 1 1 1c8-3 14-10 14-19 0-11-9-20-20-20z"/>
+            </svg>
+          </div>
+          <span class="tk-label">GitHub</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #7D2AE8 0%, #00C4CC 100%); --tk-shadow: rgba(125, 42, 232, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <circle cx="50" cy="30" r="18" fill="rgba(255,255,255,0.15)"/>
+                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="900" fill="white">C</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">Canva</span>
+        </div>
+
+        <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #21759B 0%, #0F374C 100%); --tk-shadow: rgba(33, 117, 155, 0.45);">
+          <div class="tk-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="tk-icon-pulse">
+                <circle cx="50" cy="30" r="20" fill="none" stroke="white" stroke-width="2.5"/>
+                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="900" fill="white">W</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tk-label">WordPress</span>
         </div>
 
       </div>
@@ -1939,7 +2258,7 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
       <div>
         <div class="modal-eyebrow">PM Experience Program · Electronic Arts</div>
         <h2 id="ea-title" class="modal-title">Player Segmentation & Engagement Analytics</h2>
-        <div class="modal-sub">Case Project · Solo</div>
+        <div class="modal-sub">Case Project</div>
       </div>
       <button type="button" class="modal-close" aria-label="Close">&times;</button>
     </div>
