@@ -1019,8 +1019,13 @@ section { padding: 28px 0; }
 #languages { padding: 56px 0 24px; }
 .lang-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+}
+.lang-grid > .lang-tile:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 5px);
+  justify-self: center;
 }
 .lang-tile {
   position: relative;
