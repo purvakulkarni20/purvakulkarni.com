@@ -1019,20 +1019,32 @@ section { padding: 28px 0; }
 #languages { padding: 56px 0 24px; }
 .lang-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 .lang-tile {
   position: relative;
-  aspect-ratio: 5 / 4;
+  min-height: 62px;
   border-radius: 12px;
-  padding: 8px 9px 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  cursor: default;
+}
+.lang-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px var(--tile-shadow);
+}
+.lang-tile-body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
-  cursor: default;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 .lang-tile::before {
   content: '';
@@ -1054,29 +1066,33 @@ section { padding: 28px 0; }
 }
 .lang-tile > * { position: relative; z-index: 2; }
 .lang-tile-script {
-  font-size: 14px;
-  color: rgba(255,255,255,0.92);
+  font-size: 20px;
+  color: rgba(255,255,255,0.75);
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 .lang-tile-name {
   font-family: 'Cinzel', serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  margin-bottom: 4px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .lang-tile-level {
-  font-size: 7.5px;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.85);
   background: rgba(0,0,0,0.32);
-  padding: 3px 6px;
+  padding: 3px 8px;
   border-radius: 100px;
   align-self: flex-start;
   backdrop-filter: blur(8px);
@@ -1976,49 +1992,49 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
       <div class="lang-grid">
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #C04A2B 0%, #7A2E1A 100%); --tile-shadow: rgba(192, 74, 43, 0.45);">
           <div class="lang-tile-script">हिंदी</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Hindi</div>
             <span class="lang-tile-level">Native</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F6F5C 0%, #0D3A2F 100%); --tile-shadow: rgba(31, 111, 92, 0.45);">
           <div class="lang-tile-script">اُردُو</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Urdu</div>
             <span class="lang-tile-level">Native</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #8B2C3D 0%, #4A1521 100%); --tile-shadow: rgba(139, 44, 61, 0.45);">
           <div class="lang-tile-script">मराठी</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Marathi</div>
             <span class="lang-tile-level">Native</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F3D6F 0%, #0F1F3A 100%); --tile-shadow: rgba(31, 61, 111, 0.45);">
           <div class="lang-tile-script">English</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">English</div>
             <span class="lang-tile-level">Native</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #B0353E 0%, #5C1A1F 100%); --tile-shadow: rgba(176, 53, 62, 0.45);">
           <div class="lang-tile-script">Türkçe</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Turkish</div>
             <span class="lang-tile-level">Working</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #1F7D5C 0%, #0E3F2E 100%); --tile-shadow: rgba(31, 125, 92, 0.45);">
           <div class="lang-tile-script">Português</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Portuguese</div>
             <span class="lang-tile-level">Basic</span>
           </div>
         </div>
         <div class="lang-tile" style="--tile-grad: linear-gradient(135deg, #C8853A 0%, #6F4318 100%); --tile-shadow: rgba(200, 133, 58, 0.45);">
           <div class="lang-tile-script">Español</div>
-          <div>
+          <div class="lang-tile-body">
             <div class="lang-tile-name">Spanish</div>
             <span class="lang-tile-level">Basic</span>
           </div>
