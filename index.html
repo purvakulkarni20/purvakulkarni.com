@@ -873,8 +873,26 @@ section { padding: 28px 0; }
   height: 100%;
   z-index: 2;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tk-scene svg { width: 100%; height: 100%; display: block; }
+.tk-logo {
+  width: 46px;
+  height: 46px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+.tk-scene-pair { gap: 8px; }
+.tk-logo-half {
+  width: 34px;
+  height: 34px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
 .tk-label {
   position: relative;
   z-index: 3;
@@ -1798,229 +1816,127 @@ footer .brand-mark { width: 24px; height: 24px; font-size: 10px; }
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1E5E8E 0%, #0F2F4A 100%); --tk-shadow: rgba(30, 94, 142, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g fill="rgba(255,255,255,0.92)" class="tk-icon-pulse">
-                <ellipse cx="50" cy="18" rx="22" ry="5"/>
-                <path d="M28 18v8c0 2.8 9.8 5 22 5s22-2.2 22-5v-8"/>
-                <path d="M28 28v8c0 2.8 9.8 5 22 5s22-2.2 22-5v-8" opacity="0.75"/>
-                <path d="M28 38v6c0 2.8 9.8 5 22 5s22-2.2 22-5v-6" opacity="0.55"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/mysql/white" alt="SQL"/>
           </div>
           <span class="tk-label">SQL</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #2C4E8C 0%, #1B3059 100%); --tk-shadow: rgba(44, 78, 140, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <rect x="30" y="10" width="24" height="24" rx="6" fill="#3776AB"/>
-                <rect x="46" y="26" width="24" height="24" rx="6" fill="#FFD53D"/>
-                <rect x="46" y="26" width="8" height="8" fill="#3776AB"/>
-                <circle cx="37" cy="17" r="2" fill="white"/>
-                <circle cx="63" cy="43" r="2" fill="white"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/python/FFD53D" alt="Python"/>
           </div>
           <span class="tk-label">Python</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1F5DAD 0%, #0F2E56 100%); --tk-shadow: rgba(31, 93, 173, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <ellipse cx="50" cy="30" rx="34" ry="22" fill="rgba(255,255,255,0.15)"/>
-                <text x="50" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="900" fill="white" font-style="italic">R</text>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/r/white" alt="R"/>
           </div>
           <span class="tk-label">R</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1A2A3F 0%, #0A1420 100%); --tk-shadow: rgba(228, 77, 38, 0.45);">
-          <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <path d="M18 10 L48 10 L44 50 L33 54 L22 50 Z" fill="#E44D26"/>
-                <path d="M33 14 L33 51 L42 47 L45 14 Z" fill="#F16529"/>
-                <text x="33" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="white">5</text>
-                <path d="M52 10 L82 10 L78 50 L67 54 L56 50 Z" fill="#264DE4"/>
-                <path d="M67 14 L67 51 L76 47 L79 14 Z" fill="#2965F1"/>
-                <text x="67" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="white">3</text>
-              </g>
-            </svg>
+          <div class="tk-scene tk-scene-pair">
+            <img class="tk-logo-half tk-icon-pulse" src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5"/>
+            <img class="tk-logo-half tk-icon-pulse" src="https://cdn.simpleicons.org/css3/1572B6" alt="CSS3" style="animation-delay:0.4s"/>
           </div>
           <span class="tk-label">HTML / CSS</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #0052CC 0%, #002A6E 100%); --tk-shadow: rgba(0, 82, 204, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-spin">
-                <path d="M50 8 L82 30 L50 52 L18 30 Z" fill="#2684FF"/>
-                <path d="M50 20 L70 34 L50 48 L30 34 Z" fill="#0052CC"/>
-                <path d="M50 20 L50 48 L30 34 Z" fill="#2684FF" opacity="0.5"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-spin" src="https://cdn.simpleicons.org/jira/2684FF" alt="JIRA"/>
           </div>
           <span class="tk-label">JIRA</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1F3E6F 0%, #0A1F3D 100%); --tk-shadow: rgba(233, 118, 39, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse" fill="#E97627">
-                <rect x="46" y="10" width="8" height="10"/>
-                <rect x="46" y="40" width="8" height="10"/>
-                <rect x="24" y="26" width="12" height="8"/>
-                <rect x="64" y="26" width="12" height="8"/>
-                <rect x="42" y="24" width="16" height="12"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau"/>
           </div>
           <span class="tk-label">Tableau</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #00A1E0 0%, #005780 100%); --tk-shadow: rgba(0, 161, 224, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M18 34c-1-6 3-11 8-11 2 0 4 1 6 3 3-5 9-8 15-8 9 0 17 7 17 16 0 1 0 2-1 3 4 1 7 5 7 10 0 6-5 10-11 10H23c-5 0-10-3-10-9 0-4 2-8 6-9 -1-1-1-3-1-5z" fill="rgba(255,255,255,0.95)"/>
-              <g fill="#00A1E0">
-                <g class="tk-icon-pulse">
-                  <circle cx="34" cy="32" r="2.5"/>
-                  <path d="M30 40c0-2 2-4 4-4s4 2 4 4"/>
-                </g>
-                <g class="tk-icon-pulse" style="animation-delay:0.4s">
-                  <circle cx="50" cy="28" r="2.5"/>
-                  <path d="M46 36c0-2 2-4 4-4s4 2 4 4"/>
-                </g>
-                <g class="tk-icon-pulse" style="animation-delay:0.8s">
-                  <circle cx="66" cy="32" r="2.5"/>
-                  <path d="M62 40c0-2 2-4 4-4s4 2 4 4"/>
-                </g>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/salesforce/white" alt="Salesforce"/>
           </div>
           <span class="tk-label">Salesforce</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #62D84E 0%, #1F5E17 100%); --tk-shadow: rgba(98, 216, 78, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle class="tk-icon-pulse" cx="50" cy="30" r="24" fill="rgba(255,255,255,0.16)"/>
-              <text x="50" y="34" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="900" fill="white" letter-spacing="-0.35">servicenow.</text>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/servicenow/white" alt="ServiceNow"/>
           </div>
           <span class="tk-label">ServiceNow</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #C74634 0%, #6E1E13 100%); --tk-shadow: rgba(199, 70, 52, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="900" fill="white" letter-spacing="1">ORACLE</text>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/oracle/white" alt="Oracle"/>
           </div>
           <span class="tk-label">Oracle</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #3ECF8E 0%, #14523A 100%); --tk-shadow: rgba(62, 207, 142, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="tk-icon-pulse" d="M52 6 L28 34 L46 34 L44 54 L68 26 L50 26 L52 6 Z" fill="white"/>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/supabase/white" alt="Supabase"/>
           </div>
           <span class="tk-label">Supabase</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #FF6B9D 0%, #7A2447 100%); --tk-shadow: rgba(255, 107, 157, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="tk-icon-pulse" d="M50 52 C 30 40 20 28 20 20 A 10 10 0 0 1 40 18 C 42 20 46 22 50 22 C 54 22 58 20 60 18 A 10 10 0 0 1 80 20 C 80 28 70 40 50 52 Z" fill="white"/>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/lovable/white" alt="Lovable"/>
           </div>
           <span class="tk-label">Lovable</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1A1A1A 0%, #050505 100%); --tk-shadow: rgba(80, 80, 80, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse" fill="white">
-                <path d="M40 10 L68 30 L54 34 L60 52 L52 55 L46 37 L36 44 Z"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/cursor/white" alt="Cursor"/>
           </div>
           <span class="tk-label">Cursor</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #D97757 0%, #6E3220 100%); --tk-shadow: rgba(217, 119, 87, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-spin" transform="translate(50 30)">
-                <ellipse cx="0" cy="0" rx="20" ry="5" fill="white"/>
-                <ellipse cx="0" cy="0" rx="5" ry="20" fill="white"/>
-                <ellipse cx="0" cy="0" rx="14.5" ry="14.5" fill="white" transform="rotate(45)" opacity="0"/>
-                <g transform="rotate(45)">
-                  <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="white"/>
-                  <ellipse cx="0" cy="0" rx="4.5" ry="18" fill="white"/>
-                </g>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-spin" src="https://cdn.simpleicons.org/anthropic/white" alt="Claude Code"/>
           </div>
           <span class="tk-label">Claude Code</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #10A37F 0%, #0A5C48 100%); --tk-shadow: rgba(16, 163, 127, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-spin" transform="translate(50 30)" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="0,-18 15.5,-9 15.5,9 0,18 -15.5,9 -15.5,-9"/>
-                <line x1="0" y1="-18" x2="0" y2="18"/>
-                <line x1="15.5" y1="-9" x2="-15.5" y2="9"/>
-                <line x1="15.5" y1="9" x2="-15.5" y2="-9"/>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-spin" src="https://cdn.simpleicons.org/openai/white" alt="ChatGPT"/>
           </div>
           <span class="tk-label">ChatGPT</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #24292E 0%, #0D1117 100%); --tk-shadow: rgba(36, 41, 46, 0.55);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="tk-icon-pulse" fill="white" d="M50 8c-11 0-20 9-20 20 0 9 6 16 14 19 1 0 1-1 1-1v-4c-6 1-7-3-7-3-1-2-2-3-2-3-2-1 0-1 0-1 2 0 3 2 3 2 2 3 5 2 6 2 0-1 1-3 1-3-4-1-9-2-9-10 0-2 1-4 2-6 0-1-1-3 0-6 0 0 2 0 5 2 1-1 3-1 5-1s4 0 5 1c3-2 5-2 5-2 1 3 0 5 0 6 1 2 2 4 2 6 0 8-5 9-9 10 1 1 1 2 1 3v5s0 1 1 1c8-3 14-10 14-19 0-11-9-20-20-20z"/>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/github/white" alt="GitHub"/>
           </div>
           <span class="tk-label">GitHub</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #7D2AE8 0%, #00C4CC 100%); --tk-shadow: rgba(125, 42, 232, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <circle cx="50" cy="30" r="18" fill="rgba(255,255,255,0.15)"/>
-                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="900" fill="white">C</text>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/canva/white" alt="Canva"/>
           </div>
           <span class="tk-label">Canva</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #21759B 0%, #0F374C 100%); --tk-shadow: rgba(33, 117, 155, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g class="tk-icon-pulse">
-                <circle cx="50" cy="30" r="20" fill="none" stroke="white" stroke-width="2.5"/>
-                <text x="50" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="900" fill="white">W</text>
-              </g>
-            </svg>
+            <img class="tk-logo tk-icon-pulse" src="https://cdn.simpleicons.org/wordpress/white" alt="WordPress"/>
           </div>
           <span class="tk-label">WordPress</span>
         </div>
 
         <div class="tk-tile" style="--tk-grad: linear-gradient(135deg, #1A2F4E 0%, #0A1830 100%); --tk-shadow: rgba(216, 59, 1, 0.45);">
           <div class="tk-scene">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:100%">
               <g class="tk-icon-pulse">
                 <rect x="35" y="10" width="12" height="12" fill="#F25022"/>
                 <rect x="49" y="10" width="12" height="12" fill="#7FBA00"/>
