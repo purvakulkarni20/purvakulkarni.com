@@ -304,19 +304,31 @@ section.cs-section { padding: 28px 0; }
 }
 .mini-tile {
   position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: 11px;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 8px 10px;
+  align-items: stretch;
+  justify-content: flex-end;
+  padding: 0;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
   cursor: default;
   opacity: 0;
   animation: mini-tile-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.mini-tile-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.mini-tile-scene svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .mini-tile::before {
   content: '';
@@ -389,67 +401,137 @@ section.cs-section { padding: 28px 0; }
   transform-origin: center;
 }
 
-/* Cloud upload bob (Enterprise SaaS) — bigger range */
-@keyframes anim-bob {
-  0%, 100% { transform: translateY(5px); opacity: 0.3; }
-  50%      { transform: translateY(-5px); opacity: 1; }
+/* Enterprise SaaS: three upload arrows stream into cloud in sequence */
+@keyframes anim-upload {
+  0%      { transform: translateY(14px); opacity: 0; }
+  30%     { opacity: 1; }
+  100%    { transform: translateY(-14px); opacity: 0; }
 }
-.icon-saas .anim-arrow { animation: anim-bob 1.4s ease-in-out infinite; }
-
-/* People breath pulse (HCM & Payroll) — bigger scale */
-@keyframes anim-breath {
-  0%, 100% { transform: scale(0.92); opacity: 0.7; }
-  50%      { transform: scale(1.15); opacity: 1; }
+.mini-tile-scene .anim-up-1,
+.mini-tile-scene .anim-up-2,
+.mini-tile-scene .anim-up-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-upload 1.8s ease-in-out infinite;
 }
-.icon-hcm .anim-p1 { animation: anim-breath 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.icon-hcm .anim-p2 { animation: anim-breath 1.6s ease-in-out 0.8s infinite; transform-box: fill-box; transform-origin: center; }
+.mini-tile-scene .anim-up-2 { animation-delay: 0.4s; }
+.mini-tile-scene .anim-up-3 { animation-delay: 0.8s; }
 
-/* Merge arrows meeting (M&A) — bigger swing */
-@keyframes anim-merge-down { 0%, 100% { transform: translate(-8px, -8px); } 50% { transform: translate(0, 0); } }
-@keyframes anim-merge-up   { 0%, 100% { transform: translate(8px, -8px); } 50% { transform: translate(0, 0); } }
-.icon-ma .anim-left  { animation: anim-merge-down 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.icon-ma .anim-right { animation: anim-merge-up 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-
-/* JIRA spin — faster */
-@keyframes anim-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-.icon-jira svg { animation: anim-spin 5s linear infinite; transform-origin: 50% 50%; transform-box: view-box; }
-
-/* API data transfer ping — bigger range */
-@keyframes anim-ping {
-  0%, 100% { opacity: 0.25; transform: translateX(-5px); }
-  50%      { opacity: 1;    transform: translateX(5px); }
+/* HCM & Payroll: dollar signs float up from each person */
+@keyframes anim-money-rise {
+  0%      { transform: translateY(18px); opacity: 0; }
+  20%     { opacity: 1; }
+  80%     { opacity: 1; }
+  100%    { transform: translateY(-6px); opacity: 0; }
 }
-.icon-api .anim-flow { animation: anim-ping 1.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-
-/* UAT checkmark draw-in */
-@keyframes anim-draw {
-  0%      { stroke-dashoffset: 38; opacity: 0; }
-  15%     { opacity: 1; }
-  55%     { stroke-dashoffset: 0; opacity: 1; }
-  82%     { stroke-dashoffset: 0; opacity: 1; }
-  100%    { stroke-dashoffset: 38; opacity: 0; }
+.mini-tile-scene .anim-money-1,
+.mini-tile-scene .anim-money-2,
+.mini-tile-scene .anim-money-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-money-rise 2s ease-in-out infinite;
 }
-.icon-uat .anim-check {
-  stroke-dasharray: 38;
-  stroke-dashoffset: 38;
-  animation: anim-draw 2.4s ease-in-out infinite;
+.mini-tile-scene .anim-money-2 { animation-delay: 0.5s; }
+.mini-tile-scene .anim-money-3 { animation-delay: 1s; }
+
+/* M&A Integration: buildings slide together, plus sign fades in at center, then reset */
+@keyframes anim-bldg-left {
+  0%, 15%   { transform: translateX(-14px); }
+  55%, 75%  { transform: translateX(6px); }
+  95%, 100% { transform: translateX(-14px); }
+}
+@keyframes anim-bldg-right {
+  0%, 15%   { transform: translateX(14px); }
+  55%, 75%  { transform: translateX(-6px); }
+  95%, 100% { transform: translateX(14px); }
+}
+@keyframes anim-plus {
+  0%, 45%   { opacity: 0; transform: scale(0.6); }
+  60%, 80%  { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.6); }
+}
+.mini-tile-scene .anim-bldg-left  { transform-box: fill-box; transform-origin: center; animation: anim-bldg-left 3.6s ease-in-out infinite; }
+.mini-tile-scene .anim-bldg-right { transform-box: fill-box; transform-origin: center; animation: anim-bldg-right 3.6s ease-in-out infinite; }
+.mini-tile-scene .anim-merge-plus { transform-box: fill-box; transform-origin: 50px 30px; animation: anim-plus 3.6s ease-in-out infinite; }
+
+/* JIRA: card moves across three kanban columns */
+@keyframes anim-card-move {
+  0%, 20%   { transform: translateX(0); }
+  40%, 55%  { transform: translateX(30px); }
+  75%, 90%  { transform: translateX(60px); }
+  100%      { transform: translateX(0); }
+}
+.mini-tile-scene .anim-card {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: anim-card-move 3.6s ease-in-out infinite;
 }
 
-/* Change Management rotate */
-.icon-change svg { animation: anim-spin 3.5s linear infinite; transform-origin: 50% 50%; transform-box: view-box; }
+/* UAT: checkmarks appear in sequence */
+@keyframes anim-uat-check {
+  0%, 30%   { stroke-dasharray: 12; stroke-dashoffset: 12; opacity: 0; }
+  40%, 90%  { stroke-dashoffset: 0; opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+.mini-tile-scene .anim-uat-1,
+.mini-tile-scene .anim-uat-2,
+.mini-tile-scene .anim-uat-3 {
+  stroke-dasharray: 12;
+  stroke-dashoffset: 12;
+  animation: anim-uat-check 3.5s ease-in-out infinite;
+}
+.mini-tile-scene .anim-uat-1 { animation-delay: 0.2s; }
+.mini-tile-scene .anim-uat-2 { animation-delay: 1.0s; }
+.mini-tile-scene .anim-uat-3 { animation-delay: 1.8s; }
 
-/* SQL cylinders sequenced glow — more contrast */
-@keyframes anim-fade { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
-.icon-sql .anim-db1 { animation: anim-fade 1.4s ease-in-out infinite; }
-.icon-sql .anim-db2 { animation: anim-fade 1.4s ease-in-out 0.35s infinite; }
-.icon-sql .anim-db3 { animation: anim-fade 1.4s ease-in-out 0.7s infinite; }
+/* Change Management: refresh arrows rotate + shape morphs from square to circle and back */
+@keyframes anim-refresh-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes anim-square-morph {
+  0%, 40%   { opacity: 1; }
+  45%, 95%  { opacity: 0; }
+  100%      { opacity: 1; }
+}
+@keyframes anim-circle-morph {
+  0%, 40%   { opacity: 0; }
+  45%, 95%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+.mini-tile-scene .anim-refresh { transform-box: view-box; transform-origin: 50px 30px; animation: anim-refresh-rotate 4.5s linear infinite; }
+.mini-tile-scene .anim-shape-square { animation: anim-square-morph 3s ease-in-out infinite; }
+.mini-tile-scene .anim-shape-circle { animation: anim-circle-morph 3s ease-in-out infinite; }
 
-/* Microsoft Office squares pulse in sequence — bigger */
-@keyframes anim-tile-pulse { 0%, 100% { transform: scale(0.78); opacity: 0.55; } 50% { transform: scale(1.08); opacity: 1; } }
-.icon-office .anim-sq1 { animation: anim-tile-pulse 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.icon-office .anim-sq2 { animation: anim-tile-pulse 1.6s ease-in-out 0.3s infinite; transform-box: fill-box; transform-origin: center; }
-.icon-office .anim-sq3 { animation: anim-tile-pulse 1.6s ease-in-out 0.9s infinite; transform-box: fill-box; transform-origin: center; }
-.icon-office .anim-sq4 { animation: anim-tile-pulse 1.6s ease-in-out 0.6s infinite; transform-box: fill-box; transform-origin: center; }
+/* SQL: query text types in and database layers glow */
+@keyframes anim-query-type {
+  0%, 15%   { clip-path: inset(0 100% 0 0); opacity: 0; }
+  20%, 80%  { clip-path: inset(0 0 0 0); opacity: 1; }
+  90%, 100% { clip-path: inset(0 100% 0 0); opacity: 0; }
+}
+.mini-tile-scene .anim-query { animation: anim-query-type 3.5s ease-in-out infinite; }
+@keyframes anim-db-fade { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.mini-tile-scene .anim-db1 { animation: anim-db-fade 1.6s ease-in-out infinite; }
+.mini-tile-scene .anim-db2 { animation: anim-db-fade 1.6s ease-in-out 0.4s infinite; }
+.mini-tile-scene .anim-db3 { animation: anim-db-fade 1.6s ease-in-out 0.8s infinite; }
+
+/* Microsoft Office: 4 suite icons highlight in sequence (W → X → P → O) */
+@keyframes anim-office-glow {
+  0%, 100% { transform: scale(0.92); opacity: 0.55; }
+  50%      { transform: scale(1.08); opacity: 1; filter: brightness(1.25); }
+}
+.mini-tile-scene .anim-office-w,
+.mini-tile-scene .anim-office-x,
+.mini-tile-scene .anim-office-p,
+.mini-tile-scene .anim-office-o {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-office-glow 2.4s ease-in-out infinite;
+}
+.mini-tile-scene .anim-office-w { animation-delay: 0s; }
+.mini-tile-scene .anim-office-x { animation-delay: 0.6s; }
+.mini-tile-scene .anim-office-o { animation-delay: 1.2s; }
+.mini-tile-scene .anim-office-p { animation-delay: 1.8s; }
 .mini-tile-icon {
   position: relative;
   z-index: 2;
@@ -474,14 +556,16 @@ section.cs-section { padding: 28px 0; }
 }
 .mini-tile-text {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 14.5px;
   color: #FFFFFF;
   text-align: center;
   letter-spacing: 0.005em;
   line-height: 1.15;
+  padding: 22px 8px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
 }
 
 /* VISIT CTA */
@@ -648,109 +732,202 @@ footer {
     <div class="container">
       <h2 class="cs-section-title cs-section-title-standalone">Expertise and Toolkit</h2>
       <div class="mini-tile-grid">
+        <!-- Enterprise SaaS: uploads streaming into a cloud -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1F3D6F 0%, #0F1F3A 100%); --mini-shadow: rgba(31, 61, 111, 0.4);">
-          <div class="mini-tile-icon icon-saas">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M14 32a8 8 0 0 1-2-15.7 12 12 0 0 1 23 2 7 7 0 0 1-1 14H14z"/>
-              <path class="anim-arrow" d="M24 22v12M19 27l5-5 5 5"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M32 25a10 10 0 0 1-2-19.6 15 15 0 0 1 29 3 9 9 0 0 1-1 18H32z" fill="rgba(255,255,255,0.15)" stroke-width="1.5" transform="translate(9 5)"/>
+              <g stroke-width="2" stroke="white">
+                <path class="anim-up-1" d="M28 55 L28 45 M24 49 L28 45 L32 49"/>
+                <path class="anim-up-2" d="M50 55 L50 45 M46 49 L50 45 L54 49"/>
+                <path class="anim-up-3" d="M72 55 L72 45 M68 49 L72 45 L76 49"/>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">Enterprise SaaS</span>
         </div>
 
+        <!-- HCM & Payroll: 3 people with $ floating up in sequence -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #006548 0%, #003528 100%); --mini-shadow: rgba(0, 101, 72, 0.4);">
-          <div class="mini-tile-icon icon-hcm">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <g class="anim-p1">
-                <circle cx="17" cy="17" r="5"/>
-                <path d="M7 36c0-5.5 4.5-10 10-10s10 4.5 10 10v2H7v-2z"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g fill="white" stroke="none">
+                <circle cx="22" cy="38" r="4"/>
+                <path d="M14 55c0-3.5 3.5-6.5 8-6.5s8 3 8 6.5v2H14v-2z"/>
+                <circle cx="50" cy="38" r="4"/>
+                <path d="M42 55c0-3.5 3.5-6.5 8-6.5s8 3 8 6.5v2H42v-2z"/>
+                <circle cx="78" cy="38" r="4"/>
+                <path d="M70 55c0-3.5 3.5-6.5 8-6.5s8 3 8 6.5v2H70v-2z"/>
               </g>
-              <g class="anim-p2">
-                <circle cx="33" cy="19" r="4"/>
-                <path d="M27 38v-2c0-4.5 3-8 7-8s7 3.5 7 8v2H27z"/>
+              <g fill="#FFDF6B" font-family="Arial, sans-serif" font-weight="900" font-size="14" text-anchor="middle">
+                <text class="anim-money-1" x="22" y="20">$</text>
+                <text class="anim-money-2" x="50" y="20">$</text>
+                <text class="anim-money-3" x="78" y="20">$</text>
               </g>
             </svg>
           </div>
           <span class="mini-tile-text">HCM &amp; Payroll</span>
         </div>
 
+        <!-- M&A Integration: two buildings slide together and combine -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #8B2C3D 0%, #4A1521 100%); --mini-shadow: rgba(139, 44, 61, 0.4);">
-          <div class="mini-tile-icon icon-ma">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path class="anim-left" d="M10 10l8 8"/>
-              <path class="anim-right" d="M38 10l-8 8"/>
-              <path d="M24 18v20"/>
-              <path d="M14 38h20"/>
-              <path d="M18 18h12"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g fill="white" stroke="white" class="anim-bldg-left">
+                <rect x="8" y="24" width="24" height="26" rx="1" fill="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+                <rect x="12" y="30" width="4" height="4" fill="white"/>
+                <rect x="20" y="30" width="4" height="4" fill="white"/>
+                <rect x="12" y="38" width="4" height="4" fill="white"/>
+                <rect x="20" y="38" width="4" height="4" fill="white"/>
+              </g>
+              <g fill="white" stroke="white" class="anim-bldg-right">
+                <rect x="68" y="24" width="24" height="26" rx="1" fill="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+                <rect x="72" y="30" width="4" height="4" fill="white"/>
+                <rect x="80" y="30" width="4" height="4" fill="white"/>
+                <rect x="72" y="38" width="4" height="4" fill="white"/>
+                <rect x="80" y="38" width="4" height="4" fill="white"/>
+              </g>
+              <g class="anim-merge-plus" opacity="0">
+                <circle cx="50" cy="30" r="10" fill="none" stroke="#FFDF6B" stroke-width="2"/>
+                <path d="M50 24v12M44 30h12" stroke="#FFDF6B" stroke-width="2"/>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">M&amp;A Integration</span>
         </div>
 
+        <!-- JIRA: kanban card moves across 3 columns -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #0052CC 0%, #002A6E 100%); --mini-shadow: rgba(0, 82, 204, 0.45);">
-          <div class="mini-tile-icon icon-jira">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M24 4 L42 22 L24 40 L6 22 Z" fill="#2684FF"/>
-              <path d="M24 14 L36 26 L24 38 L12 26 Z" fill="#0052CC"/>
-              <path d="M24 14 L24 38 L12 26 Z" fill="#2684FF" opacity="0.6"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+                <rect x="8" y="12" width="24" height="38" rx="2"/>
+                <rect x="38" y="12" width="24" height="38" rx="2"/>
+                <rect x="68" y="12" width="24" height="38" rx="2"/>
+              </g>
+              <g fill="rgba(255,255,255,0.55)">
+                <rect x="12" y="18" width="16" height="1.6" rx="0.8"/>
+                <rect x="42" y="18" width="16" height="1.6" rx="0.8"/>
+                <rect x="72" y="18" width="16" height="1.6" rx="0.8"/>
+              </g>
+              <rect class="anim-card" x="12" y="26" width="16" height="18" rx="2" fill="#FFDF6B"/>
             </svg>
           </div>
           <span class="mini-tile-text">JIRA</span>
         </div>
 
+        <!-- API Data Migration: packets flow between two databases -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #C8853A 0%, #6F4318 100%); --mini-shadow: rgba(200, 133, 58, 0.4);">
-          <div class="mini-tile-icon icon-api">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <ellipse cx="14" cy="14" rx="6" ry="2.5"/>
-              <path d="M8 14v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-8"/>
-              <ellipse cx="34" cy="26" rx="6" ry="2.5"/>
-              <path d="M28 26v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-8"/>
-              <path class="anim-flow" d="M20 18l6 6M22 22l4 0M22 22l0-4"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g fill="rgba(255,255,255,0.9)">
+                <ellipse cx="16" cy="18" rx="10" ry="3"/>
+                <path d="M6 18v22c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5V18"/>
+                <path d="M6 26c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5" stroke="rgba(0,0,0,0.15)" fill="none"/>
+                <path d="M6 34c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5" stroke="rgba(0,0,0,0.15)" fill="none"/>
+              </g>
+              <g fill="rgba(255,255,255,0.9)">
+                <ellipse cx="84" cy="18" rx="10" ry="3"/>
+                <path d="M74 18v22c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5V18"/>
+                <path d="M74 26c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5" stroke="rgba(0,0,0,0.15)" fill="none"/>
+                <path d="M74 34c0 2 4.5 3.5 10 3.5s10-1.5 10-3.5" stroke="rgba(0,0,0,0.15)" fill="none"/>
+              </g>
+              <path id="apiFlow" d="M28 22 Q 50 6 72 22" fill="none" stroke="none"/>
+              <circle r="2.4" fill="#FFDF6B">
+                <animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#apiFlow"/></animateMotion>
+              </circle>
+              <circle r="2.4" fill="#FFDF6B">
+                <animateMotion dur="1.8s" begin="0.6s" repeatCount="indefinite"><mpath href="#apiFlow"/></animateMotion>
+              </circle>
+              <circle r="2.4" fill="#FFDF6B">
+                <animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite"><mpath href="#apiFlow"/></animateMotion>
+              </circle>
             </svg>
           </div>
           <span class="mini-tile-text">API Data Migration</span>
         </div>
 
+        <!-- UAT: checklist with items ticking in sequence -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #C04A2B 0%, #7A2E1A 100%); --mini-shadow: rgba(192, 74, 43, 0.4);">
-          <div class="mini-tile-icon icon-uat">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="24" cy="24" r="18"/>
-              <path class="anim-check" d="M14 24l7 7 14-14"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="14" y="8" width="72" height="48" rx="3" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+              <g stroke="white" stroke-width="1.4">
+                <rect x="20" y="15" width="8" height="8" rx="1.5"/>
+                <line x1="34" y1="19" x2="80" y2="19" opacity="0.7"/>
+                <path class="anim-uat-1" d="M21.5 19 L23.5 21 L26.5 16" fill="none" stroke="#FFDF6B" stroke-width="2"/>
+              </g>
+              <g stroke="white" stroke-width="1.4">
+                <rect x="20" y="28" width="8" height="8" rx="1.5"/>
+                <line x1="34" y1="32" x2="76" y2="32" opacity="0.7"/>
+                <path class="anim-uat-2" d="M21.5 32 L23.5 34 L26.5 29" fill="none" stroke="#FFDF6B" stroke-width="2"/>
+              </g>
+              <g stroke="white" stroke-width="1.4">
+                <rect x="20" y="41" width="8" height="8" rx="1.5"/>
+                <line x1="34" y1="45" x2="72" y2="45" opacity="0.7"/>
+                <path class="anim-uat-3" d="M21.5 45 L23.5 47 L26.5 42" fill="none" stroke="#FFDF6B" stroke-width="2"/>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">UAT</span>
         </div>
 
+        <!-- Change Management: shape morphs (square → circle → back) inside refresh arrows -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #B0353E 0%, #5C1A1F 100%); --mini-shadow: rgba(176, 53, 62, 0.4);">
-          <div class="mini-tile-icon icon-change">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M40 12v10h-10"/>
-              <path d="M8 36V26h10"/>
-              <path d="M36 22a14 14 0 0 0-24-7M12 26a14 14 0 0 0 24 7"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g class="anim-refresh" stroke="rgba(255,255,255,0.6)">
+                <path d="M80 12v14h-14"/>
+                <path d="M20 48V34h14"/>
+                <path d="M74 24a24 24 0 0 0-46-6"/>
+                <path d="M26 36a24 24 0 0 0 46 6"/>
+              </g>
+              <rect class="anim-shape-square" x="42" y="22" width="16" height="16" rx="2" fill="#FFDF6B"/>
+              <circle class="anim-shape-circle" cx="50" cy="30" r="10" fill="#FFDF6B" opacity="0"/>
             </svg>
           </div>
           <span class="mini-tile-text">Change Management</span>
         </div>
 
+        <!-- SQL: query text typing on a terminal above a database -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1E5E8E 0%, #0F2F4A 100%); --mini-shadow: rgba(30, 94, 142, 0.45);">
-          <div class="mini-tile-icon icon-sql">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse class="anim-db1" cx="24" cy="14" rx="16" ry="6" fill="white"/>
-              <path class="anim-db2" d="M8 14v8c0 3.3 7.2 6 16 6s16-2.7 16-6v-8" fill="white" opacity="0.7"/>
-              <path class="anim-db3" d="M8 22v8c0 3.3 7.2 6 16 6s16-2.7 16-6v-8" fill="white" opacity="0.4"/>
-              <text x="24" y="40" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="900" fill="white">SQL</text>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="10" y="6" width="80" height="26" rx="3" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <circle cx="16" cy="12" r="1.5" fill="#FF605C"/>
+              <circle cx="22" cy="12" r="1.5" fill="#FFBD44"/>
+              <circle cx="28" cy="12" r="1.5" fill="#00CA4E"/>
+              <text class="anim-query" x="15" y="24" font-family="Menlo, Consolas, monospace" font-size="7" font-weight="700" fill="#7FE2FF">SELECT * FROM ...</text>
+              <g fill="rgba(255,255,255,0.85)">
+                <ellipse class="anim-db1" cx="50" cy="40" rx="14" ry="3.5"/>
+                <path class="anim-db2" d="M36 40v6c0 1.8 6.3 3.5 14 3.5s14-1.7 14-3.5v-6" fill="rgba(255,255,255,0.7)"/>
+                <path class="anim-db3" d="M36 47v6c0 1.8 6.3 3.5 14 3.5s14-1.7 14-3.5v-6" fill="rgba(255,255,255,0.5)"/>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">SQL</span>
         </div>
 
+        <!-- Microsoft Office: 4 suite squares light up in sequence -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #D83B01 0%, #7A2104 100%); --mini-shadow: rgba(216, 59, 1, 0.45);">
-          <div class="mini-tile-icon icon-office">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect class="anim-sq1" x="4" y="4" width="18" height="18" fill="#F25022"/>
-              <rect class="anim-sq2" x="26" y="4" width="18" height="18" fill="#7FBA00"/>
-              <rect class="anim-sq3" x="4" y="26" width="18" height="18" fill="#00A4EF"/>
-              <rect class="anim-sq4" x="26" y="26" width="18" height="18" fill="#FFB900"/>
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g class="anim-office-w">
+                <rect x="18" y="8" width="26" height="18" rx="2" fill="#2B579A"/>
+                <text x="31" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="white">W</text>
+              </g>
+              <g class="anim-office-x">
+                <rect x="56" y="8" width="26" height="18" rx="2" fill="#107C41"/>
+                <text x="69" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="white">X</text>
+              </g>
+              <g class="anim-office-p">
+                <rect x="18" y="34" width="26" height="18" rx="2" fill="#B7472A"/>
+                <text x="31" y="47" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="white">P</text>
+              </g>
+              <g class="anim-office-o">
+                <rect x="56" y="34" width="26" height="18" rx="2" fill="#0078D4"/>
+                <text x="69" y="47" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="white">O</text>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">Microsoft Office</span>
