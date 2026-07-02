@@ -395,6 +395,8 @@ section.cs-section { padding: 28px 0; }
 .mini-tile:nth-child(13)::after { animation-delay: 7.2s; }
 .mini-tile:nth-child(14) { animation-delay: 0.96s; }
 .mini-tile:nth-child(14)::after { animation-delay: 7.8s; }
+.mini-tile:nth-child(15) { animation-delay: 1.03s; }
+.mini-tile:nth-child(15)::after { animation-delay: 8.4s; }
 
 @media (prefers-reduced-motion: reduce) {
   .mini-tile { opacity: 1; animation: none; }
@@ -576,22 +578,32 @@ section.cs-section { padding: 28px 0; }
 .mini-tile-scene .anim-contact-2 { animation-delay: 0.8s; }
 .mini-tile-scene .anim-contact-3 { animation-delay: 1.6s; }
 
-/* ServiceNow: dot travels through workflow stages */
-@keyframes anim-workflow-pulse {
-  0%, 30%   { transform: scale(1); opacity: 0.5; }
-  50%       { transform: scale(1.3); opacity: 1; }
-  70%, 100% { transform: scale(1); opacity: 0.5; }
+/* ServiceNow: ticket card slides through three workflow columns */
+@keyframes anim-ticket-move {
+  0%, 15%   { transform: translateX(0); }
+  33%, 48%  { transform: translateX(30px); }
+  66%, 82%  { transform: translateX(60px); }
+  100%      { transform: translateX(0); }
 }
-.mini-tile-scene .anim-stage-1,
-.mini-tile-scene .anim-stage-2,
-.mini-tile-scene .anim-stage-3 {
+.mini-tile-scene .anim-ticket-move {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: anim-ticket-move 3.6s ease-in-out infinite;
+}
+
+/* Requirements Analysis: highlighter bar slides through requirement rows */
+@keyframes anim-highlight-slide {
+  0%, 8%    { transform: translateY(0); opacity: 0.6; }
+  22%, 32%  { transform: translateY(9px); opacity: 0.8; }
+  46%, 56%  { transform: translateY(18px); opacity: 0.8; }
+  70%, 80%  { transform: translateY(27px); opacity: 0.6; }
+  100%      { transform: translateY(0); opacity: 0.6; }
+}
+.mini-tile-scene .anim-highlight {
   transform-box: fill-box;
   transform-origin: center;
-  animation: anim-workflow-pulse 2.4s ease-in-out infinite;
+  animation: anim-highlight-slide 3.6s ease-in-out infinite;
 }
-.mini-tile-scene .anim-stage-1 { animation-delay: 0s; }
-.mini-tile-scene .anim-stage-2 { animation-delay: 0.8s; }
-.mini-tile-scene .anim-stage-3 { animation-delay: 1.6s; }
 
 /* Stakeholder Advisory: 3 speaker highlights rotate around the table */
 @keyframes anim-speaker {
@@ -1039,31 +1051,48 @@ footer {
           <span class="mini-tile-text">Tableau</span>
         </div>
 
-        <!-- Salesforce: cloud with contact dots flowing in -->
+        <!-- Salesforce: CRM contact records animate through a signature cloud -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #00A1E0 0%, #005780 100%); --mini-shadow: rgba(0, 161, 224, 0.45);">
           <div class="mini-tile-scene">
             <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M42 34a10 10 0 0 1-2-19.6 15 15 0 0 1 29 3 9 9 0 0 1-1 18H42z" fill="rgba(255,255,255,0.92)"/>
-              <circle class="anim-contact-1" cx="80" cy="50" r="3.5" fill="#FFDF6B"/>
-              <circle class="anim-contact-2" cx="65" cy="55" r="3.5" fill="#FFDF6B"/>
-              <circle class="anim-contact-3" cx="50" cy="52" r="3.5" fill="#FFDF6B"/>
+              <path d="M18 34c-1-6 3-11 8-11 2 0 4 1 6 3 3-5 9-8 15-8 9 0 17 7 17 16 0 1 0 2-1 3 4 1 7 5 7 10 0 6-5 10-11 10H23c-5 0-10-3-10-9 0-4 2-8 6-9 -1-1-1-3-1-5z" fill="rgba(255,255,255,0.95)"/>
+              <g fill="#00A1E0">
+                <g class="anim-crm-1">
+                  <circle cx="30" cy="30" r="3"/>
+                  <path d="M25 40c0-3 2-5 5-5s5 2 5 5"/>
+                </g>
+                <g class="anim-crm-2">
+                  <circle cx="50" cy="26" r="3"/>
+                  <path d="M45 36c0-3 2-5 5-5s5 2 5 5"/>
+                </g>
+                <g class="anim-crm-3">
+                  <circle cx="70" cy="30" r="3"/>
+                  <path d="M65 40c0-3 2-5 5-5s5 2 5 5"/>
+                </g>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">Salesforce</span>
         </div>
 
-        <!-- ServiceNow: 3 workflow stages pulse in sequence -->
+        <!-- ServiceNow: a support ticket moves through New → In Progress → Resolved -->
         <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #62D84E 0%, #1F5E17 100%); --mini-shadow: rgba(98, 216, 78, 0.45);">
           <div class="mini-tile-scene">
             <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <line x1="30" y1="30" x2="50" y2="30" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-              <line x1="60" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-              <circle class="anim-stage-1" cx="20" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
-              <circle class="anim-stage-2" cx="55" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
-              <circle class="anim-stage-3" cx="90" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
-              <path d="M17 30 L19 32 L23 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M52 30 L54 32 L58 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M87 30 L89 32 L93 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="20" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">NEW</text>
+              <text x="50" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">PROGRESS</text>
+              <text x="80" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="0.5">RESOLVED</text>
+              <g fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.55)" stroke-width="1">
+                <rect x="10" y="18" width="20" height="30" rx="2"/>
+                <rect x="40" y="18" width="20" height="30" rx="2"/>
+                <rect x="70" y="18" width="20" height="30" rx="2"/>
+              </g>
+              <g class="anim-ticket-move">
+                <rect x="12" y="24" width="16" height="12" rx="2" fill="#FFDF6B"/>
+                <line x1="14" y1="28" x2="26" y2="28" stroke="rgba(0,0,0,0.35)" stroke-width="0.8"/>
+                <line x1="14" y1="31" x2="24" y2="31" stroke="rgba(0,0,0,0.25)" stroke-width="0.8"/>
+                <circle cx="26" cy="26" r="1.4" fill="#E5573F"/>
+              </g>
             </svg>
           </div>
           <span class="mini-tile-text">ServiceNow</span>
@@ -1108,6 +1137,30 @@ footer {
             </svg>
           </div>
           <span class="mini-tile-text">Discovery &amp; Scoping</span>
+        </div>
+
+        <!-- Requirements Analysis: highlighter bar slides down a requirements list -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1F6E7A 0%, #0D3540 100%); --mini-shadow: rgba(31, 110, 122, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="18" y="8" width="64" height="46" rx="2" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+              <line x1="24" y1="14" x2="52" y2="14" stroke="white" stroke-width="1.6"/>
+              <g fill="white">
+                <circle cx="26" cy="22" r="1.4"/>
+                <circle cx="26" cy="30" r="1.4"/>
+                <circle cx="26" cy="38" r="1.4"/>
+                <circle cx="26" cy="46" r="1.4"/>
+              </g>
+              <g stroke="white" stroke-width="0.9" opacity="0.6">
+                <line x1="32" y1="22" x2="76" y2="22"/>
+                <line x1="32" y1="30" x2="72" y2="30"/>
+                <line x1="32" y1="38" x2="74" y2="38"/>
+                <line x1="32" y1="46" x2="68" y2="46"/>
+              </g>
+              <rect class="anim-highlight" x="22" y="20" width="58" height="4" fill="#FFDF6B" opacity="0.6" rx="1"/>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Requirements Analysis</span>
         </div>
       </div>
     </div>
