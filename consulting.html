@@ -385,6 +385,16 @@ section.cs-section { padding: 28px 0; }
 .mini-tile:nth-child(8)::after { animation-delay: 4.2s; }
 .mini-tile:nth-child(9) { animation-delay: 0.61s; }
 .mini-tile:nth-child(9)::after { animation-delay: 4.8s; }
+.mini-tile:nth-child(10) { animation-delay: 0.68s; }
+.mini-tile:nth-child(10)::after { animation-delay: 5.4s; }
+.mini-tile:nth-child(11) { animation-delay: 0.75s; }
+.mini-tile:nth-child(11)::after { animation-delay: 6.0s; }
+.mini-tile:nth-child(12) { animation-delay: 0.82s; }
+.mini-tile:nth-child(12)::after { animation-delay: 6.6s; }
+.mini-tile:nth-child(13) { animation-delay: 0.89s; }
+.mini-tile:nth-child(13)::after { animation-delay: 7.2s; }
+.mini-tile:nth-child(14) { animation-delay: 0.96s; }
+.mini-tile:nth-child(14)::after { animation-delay: 7.8s; }
 
 @media (prefers-reduced-motion: reduce) {
   .mini-tile { opacity: 1; animation: none; }
@@ -532,6 +542,87 @@ section.cs-section { padding: 28px 0; }
 .mini-tile-scene .anim-office-x { animation-delay: 0.6s; }
 .mini-tile-scene .anim-office-o { animation-delay: 1.2s; }
 .mini-tile-scene .anim-office-p { animation-delay: 1.8s; }
+
+/* Tableau: 3 bar chart bars pulse to different heights */
+@keyframes anim-bar-pulse {
+  0%, 100% { transform: scaleY(0.4); }
+  50%      { transform: scaleY(1); }
+}
+.mini-tile-scene .anim-bar-1,
+.mini-tile-scene .anim-bar-2,
+.mini-tile-scene .anim-bar-3 {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: anim-bar-pulse 2s ease-in-out infinite;
+}
+.mini-tile-scene .anim-bar-1 { animation-delay: 0s; }
+.mini-tile-scene .anim-bar-2 { animation-delay: 0.3s; }
+.mini-tile-scene .anim-bar-3 { animation-delay: 0.6s; }
+
+/* Salesforce: contact dots orbit the cloud */
+@keyframes anim-contact-in {
+  0%      { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  30%     { opacity: 1; }
+  100%    { transform: translate(-30px, -20px) scale(1); opacity: 0; }
+}
+.mini-tile-scene .anim-contact-1,
+.mini-tile-scene .anim-contact-2,
+.mini-tile-scene .anim-contact-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-contact-in 2.4s ease-in-out infinite;
+}
+.mini-tile-scene .anim-contact-1 { animation-delay: 0s; }
+.mini-tile-scene .anim-contact-2 { animation-delay: 0.8s; }
+.mini-tile-scene .anim-contact-3 { animation-delay: 1.6s; }
+
+/* ServiceNow: dot travels through workflow stages */
+@keyframes anim-workflow-pulse {
+  0%, 30%   { transform: scale(1); opacity: 0.5; }
+  50%       { transform: scale(1.3); opacity: 1; }
+  70%, 100% { transform: scale(1); opacity: 0.5; }
+}
+.mini-tile-scene .anim-stage-1,
+.mini-tile-scene .anim-stage-2,
+.mini-tile-scene .anim-stage-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-workflow-pulse 2.4s ease-in-out infinite;
+}
+.mini-tile-scene .anim-stage-1 { animation-delay: 0s; }
+.mini-tile-scene .anim-stage-2 { animation-delay: 0.8s; }
+.mini-tile-scene .anim-stage-3 { animation-delay: 1.6s; }
+
+/* Stakeholder Advisory: 3 speaker highlights rotate around the table */
+@keyframes anim-speaker {
+  0%, 20%   { transform: scale(1); opacity: 0.7; }
+  35%, 55%  { transform: scale(1.15); opacity: 1; }
+  70%, 100% { transform: scale(1); opacity: 0.7; }
+}
+.mini-tile-scene .anim-sp-1,
+.mini-tile-scene .anim-sp-2,
+.mini-tile-scene .anim-sp-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-speaker 3s ease-in-out infinite;
+}
+.mini-tile-scene .anim-sp-1 { animation-delay: 0s; }
+.mini-tile-scene .anim-sp-2 { animation-delay: 1s; }
+.mini-tile-scene .anim-sp-3 { animation-delay: 2s; }
+
+/* Discovery & Scoping: magnifying glass sweeps over document */
+@keyframes anim-mag-sweep {
+  0%      { transform: translate(0, 0); }
+  25%     { transform: translate(-8px, 3px); }
+  50%     { transform: translate(6px, -4px); }
+  75%     { transform: translate(-4px, -2px); }
+  100%    { transform: translate(0, 0); }
+}
+.mini-tile-scene .anim-mag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anim-mag-sweep 3.5s ease-in-out infinite;
+}
 .mini-tile-icon {
   position: relative;
   z-index: 2;
@@ -931,6 +1022,92 @@ footer {
             </svg>
           </div>
           <span class="mini-tile-text">Microsoft Office</span>
+        </div>
+
+        <!-- Tableau: bar chart bars pulse to different heights -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #1F3E6F 0%, #0A1F3D 100%); --mini-shadow: rgba(233, 118, 39, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="14" y1="48" x2="86" y2="48" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+              <line x1="14" y1="12" x2="14" y2="48" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+              <rect class="anim-bar-1" x="22" y="18" width="12" height="30" fill="#E97627" rx="1"/>
+              <rect class="anim-bar-2" x="40" y="14" width="12" height="34" fill="#4E88C7" rx="1"/>
+              <rect class="anim-bar-3" x="58" y="22" width="12" height="26" fill="#5EB8A2" rx="1"/>
+              <rect x="76" y="30" width="6" height="18" fill="rgba(255,255,255,0.55)" rx="1"/>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Tableau</span>
+        </div>
+
+        <!-- Salesforce: cloud with contact dots flowing in -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #00A1E0 0%, #005780 100%); --mini-shadow: rgba(0, 161, 224, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M42 34a10 10 0 0 1-2-19.6 15 15 0 0 1 29 3 9 9 0 0 1-1 18H42z" fill="rgba(255,255,255,0.92)"/>
+              <circle class="anim-contact-1" cx="80" cy="50" r="3.5" fill="#FFDF6B"/>
+              <circle class="anim-contact-2" cx="65" cy="55" r="3.5" fill="#FFDF6B"/>
+              <circle class="anim-contact-3" cx="50" cy="52" r="3.5" fill="#FFDF6B"/>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Salesforce</span>
+        </div>
+
+        <!-- ServiceNow: 3 workflow stages pulse in sequence -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #62D84E 0%, #1F5E17 100%); --mini-shadow: rgba(98, 216, 78, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="30" y1="30" x2="50" y2="30" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+              <line x1="60" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+              <circle class="anim-stage-1" cx="20" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
+              <circle class="anim-stage-2" cx="55" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
+              <circle class="anim-stage-3" cx="90" cy="30" r="8" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.5"/>
+              <path d="M17 30 L19 32 L23 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M52 30 L54 32 L58 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M87 30 L89 32 L93 27" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="mini-tile-text">ServiceNow</span>
+        </div>
+
+        <!-- Stakeholder Advisory: three people around a table, each pulses in turn -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #B87333 0%, #5E3A19 100%); --mini-shadow: rgba(184, 115, 51, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <ellipse cx="50" cy="46" rx="30" ry="6" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+              <g class="anim-sp-1" fill="white">
+                <circle cx="26" cy="20" r="4"/>
+                <path d="M20 34c0-3 2.5-6 6-6s6 3 6 6v2H20z"/>
+              </g>
+              <g class="anim-sp-2" fill="white">
+                <circle cx="50" cy="14" r="4"/>
+                <path d="M44 28c0-3 2.5-6 6-6s6 3 6 6v2H44z"/>
+              </g>
+              <g class="anim-sp-3" fill="white">
+                <circle cx="74" cy="20" r="4"/>
+                <path d="M68 34c0-3 2.5-6 6-6s6 3 6 6v2H68z"/>
+              </g>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Stakeholder Advisory</span>
+        </div>
+
+        <!-- Discovery & Scoping: magnifying glass sweeps over document lines -->
+        <div class="mini-tile" style="--mini-grad: linear-gradient(135deg, #5C3A8A 0%, #2E1D45 100%); --mini-shadow: rgba(92, 58, 138, 0.45);">
+          <div class="mini-tile-scene">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="18" y="10" width="46" height="40" rx="2" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+              <line x1="24" y1="18" x2="58" y2="18" stroke="white" stroke-width="1" opacity="0.7"/>
+              <line x1="24" y1="24" x2="54" y2="24" stroke="white" stroke-width="1" opacity="0.55"/>
+              <line x1="24" y1="30" x2="50" y2="30" stroke="white" stroke-width="1" opacity="0.55"/>
+              <line x1="24" y1="36" x2="56" y2="36" stroke="white" stroke-width="1" opacity="0.55"/>
+              <line x1="24" y1="42" x2="46" y2="42" stroke="white" stroke-width="1" opacity="0.55"/>
+              <g class="anim-mag">
+                <circle cx="66" cy="34" r="11" fill="none" stroke="#FFDF6B" stroke-width="2.5"/>
+                <line x1="75" y1="43" x2="82" y2="50" stroke="#FFDF6B" stroke-width="3" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <span class="mini-tile-text">Discovery &amp; Scoping</span>
         </div>
       </div>
     </div>
