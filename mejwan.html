@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mejwan | Purva Kulkarni</title>
+<meta name="description" content="Mejwan is a meal discovery app for 50+ global cuisines, with an AI pantry/fridge scanner, dietary personalization, and a multilingual voice-enabled AI chef. Built solo by Purva Kulkarni." />
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Purva Kulkarni" />
+<meta property="og:title" content="Purva Kulkarni" />
+<meta property="og:description" content="A meal discovery app for 50+ global cuisines, with an AI pantry & fridge scanner, dietary personalization, and a multilingual voice-enabled AI chef." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0A0F1F;
+  --surface: #141B30;
+  --surface-2: #1D2640;
+  --surface-3: #252F4D;
+  --border: rgba(212, 184, 118, 0.14);
+  --border-strong: rgba(212, 184, 118, 0.3);
+  --border-soft: rgba(245, 240, 226, 0.08);
+  --text: #F5F0E2;
+  --text-2: rgba(245, 240, 226, 0.7);
+  --text-3: rgba(245, 240, 226, 0.5);
+  --text-4: rgba(245, 240, 226, 0.35);
+  --gold: #D4B876;
+  --gold-bright: #E5C988;
+  --gold-dim: #A88845;
+  --navy: #1B2A4E;
+  --navy-deep: #0F1B36;
+  --max: 1080px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% -10%, rgba(212, 184, 118, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 0% 40%, rgba(27, 42, 78, 0.45), transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+::selection { background: var(--gold); color: var(--navy-deep); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(10, 15, 31, 0.72);
+  border-bottom: 1px solid var(--border-soft);
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.back-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+.back-link:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-deep);
+  background: var(--gold);
+  padding: 9px 18px;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+
+/* HERO */
+.cs-hero {
+  padding: 56px 0 32px;
+  text-align: center;
+}
+.cs-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 7px 16px;
+  background: rgba(212, 184, 118, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.cs-hero-logo {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  display: block;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+}
+.cs-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.cs-title em { font-style: normal; color: var(--gold); }
+.cs-tagline {
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 720px;
+  margin: 0 auto 36px;
+  font-weight: 300;
+}
+.cs-tagline em { color: var(--gold); font-style: italic; }
+.cs-hero-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-deep);
+  box-shadow: 0 8px 24px rgba(212, 184, 118, 0.18);
+}
+.btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 184, 118, 0.28); }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border-soft);
+}
+.btn-secondary:hover { background: var(--surface-2); border-color: var(--border); }
+
+/* OUTCOMES STRIP */
+.outcomes {
+  padding: 32px 0;
+}
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.outcome-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 26px 24px;
+}
+.outcome-num {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.outcome-label {
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section.cs-section { padding: 28px 0; }
+.cs-section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.cs-section-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.cs-section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 2.8vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.cs-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 36px 40px;
+}
+.cs-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+.cs-card p + p { margin-top: 14px; }
+.cs-card p strong { color: var(--text); font-weight: 600; }
+
+/* WHAT I OWNED LIST */
+.owned-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.owned-item {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 22px 24px;
+}
+.owned-item-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.owned-item-text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* STACK */
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stack-chip {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  color: var(--text);
+}
+
+/* VISIT CTA */
+.visit-cta {
+  padding: 48px 0 80px;
+}
+.visit-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 70%);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.visit-card::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 184, 118, 0.18), transparent 60%);
+  pointer-events: none;
+}
+.visit-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+  position: relative;
+}
+.visit-title em { font-style: normal; color: var(--gold); }
+.visit-sub {
+  font-size: 16px;
+  color: var(--text-2);
+  margin-bottom: 28px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-4);
+  font-weight: 500;
+  border-top: 1px solid var(--border-soft);
+}
+
+@media (max-width: 760px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 12px 20px; }
+  .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+  .owned-list { grid-template-columns: 1fr; }
+  .cs-card { padding: 28px 24px; }
+  .visit-card { padding: 36px 24px; }
+  footer { flex-direction: column; gap: 12px; padding: 24px 20px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Portfolio
+    </a>
+    <a href="https://mejwan.com" target="_blank" rel="noopener" class="nav-cta">
+      Visit Live Site
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <header class="cs-hero">
+    <div class="container">
+      <div class="cs-hero-tag">Consumer AI · Solo Build</div>
+      <img src="Mejwan%20Logo.png" alt="Mejwan" class="cs-hero-logo" />
+      <h1 class="cs-title"><em>Mejwan</em></h1>
+      <p class="cs-tagline">
+        A meal discovery app for <em>50+ global cuisines</em>. Scan your <em>pantry or fridge</em> to cook from what you already have, get recipes adapted to your diet and preferences, and follow along with a multilingual <em>AI chef</em> that chats, listens, and reads recipes aloud while you cook.
+      </p>
+      <div class="cs-hero-actions">
+        <a href="https://mejwan.com" target="_blank" rel="noopener" class="btn btn-primary">
+          Visit Mejwan
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="outcomes">
+    <div class="container">
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <div class="outcome-num">+45%</div>
+          <div class="outcome-label">Daily active usage after beta iteration</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">−30%</div>
+          <div class="outcome-label">Load time reduction</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">50+</div>
+          <div class="outcome-label">Global cuisines supported</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-num">20+</div>
+          <div class="outcome-label">Beta users in qualitative research</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">The Problem</div>
+      <h2 class="cs-section-title">Cooking from what you have shouldn't feel like work.</h2>
+      <div class="cs-card">
+        <p>Most recipe apps treat dietary preferences as filters, narrowing the cuisines you see instead of personalizing them. You lose the dishes you grew up with, or the ones you'd love to try, because the app decided they don't fit you.</p>
+        <p>And you don't always know what's actually in your own kitchen. Groceries get pushed to the back of the fridge, stacked in the pantry, lost behind something else. Cooking from what you already have starts feeling like extra work to figure out, so eating out wins.</p>
+        <p>Mejwan flips both. <strong>A pantry and fridge scanner surfaces what you actually have, including what you forgot.</strong> Recipes get adapted to your diet and preferences instead of being filtered out. And a multilingual AI chef walks you through cooking with chat, voice, and read-aloud, so you don't need clean hands to follow along.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">How It Started</div>
+      <h2 class="cs-section-title">Built from a problem I kept hearing.</h2>
+      <div class="cs-card">
+        <p>My friends and I kept having the same conversation, one that reflected a frustration I was facing myself. We were tired of eating the same meals or constantly defaulting to takeout. The problem was real and recurring, yet no one had built a meaningful solution. I decided to build one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">Features</div>
+      <h2 class="cs-section-title">Four parts working together.</h2>
+      <ul class="owned-list">
+        <li class="owned-item">
+          <div class="owned-item-label">Personalization</div>
+          <div class="owned-item-text">Set your diet, allergies, and preferences once. Every recipe Mejwan surfaces is shaped around your profile from the start, so you never have to filter through what does not apply to you.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">AI Scanner</div>
+          <div class="owned-item-text">Scan your fridge or pantry, and Mejwan recognizes what is actually there. Recipe recommendations are built from the ingredients you already have, helping reduce food waste and the daily question of what to make.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">AI Tailor</div>
+          <div class="owned-item-text">Generate new recipes through search, and AI Tailor automatically caters them to your profile. You can also customize anything further, swapping ingredients, adjusting portions, or changing a technique to fit your kitchen.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">AI Chef</div>
+          <div class="owned-item-text">Cook hands-free with voice guidance that walks you through every step. Ask questions, request substitutions, or adjust on the fly through voice or text chat, with multilingual support across the languages offered.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">From Idea to Launch</div>
+      <h2 class="cs-section-title">I built every part of Mejwan. Here's what that looked like.</h2>
+      <ul class="owned-list">
+        <li class="owned-item">
+          <div class="owned-item-label">Product Manager</div>
+          <div class="owned-item-text">Owned product strategy and Solution Intent for Mejwan. Authored the PRD, defined the Vision and MVP scope, and maintained a WSJF-prioritized Program Backlog structured as Epics decomposed into Features. Sized work using Cost of Delay and Job Size inputs and set Program Increment Objectives with clear business value each iteration.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">Product Owner</div>
+          <div class="owned-item-text">Owned the Team Backlog and wrote user Stories to INVEST conventions with testable acceptance criteria. Enforced Definition of Ready at story acceptance and Definition of Done at closure, ran Backlog Refinement, Iteration Planning, and Iteration Retrospectives across every cycle, and ROAMed risks per iteration.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">UX Designer</div>
+          <div class="owned-item-text">Designed the complete UI in Lovable across the pantry and fridge scan flow, dashboard, recipe detail, hands-free cooking mode, onboarding, and dietary personalization panels. Built a design system with typography, spacing, and color tokens for cross-screen consistency. Applied mobile-first standards for the Capacitor launch, including 44 point touch targets, accessible contrast ratios, and native script support across six writing systems.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">AI Product Lead</div>
+          <div class="owned-item-text">Defined AI behavior and prompt strategy on top of Lovable's built-in Gemini access across image recognition, dietary recipe adaptation across 50+ cuisines, multilingual voice chat, and read-aloud cooking guidance. Wrote prompts as Stories with acceptance criteria on accuracy, tone, and latency. Ran variant testing on real recipes and beta users, and defined model fallback behavior for edge cases.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">Full-Stack Engineer</div>
+          <div class="owned-item-text">Built and debugged core Features using Claude Code, managed the GitHub repository with a structured branching workflow, and integrated Supabase for authentication, storage, and database. Handled the Lovable Publish gate on every frontend commit as part of the Continuous Delivery Pipeline.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">QA Engineer</div>
+          <div class="owned-item-text">Authored test plans covering the primary user flow, regression, edge cases, and Built-in Quality checks against the locked product rule. Validated each Lovable Publish by diffing shipped commits, sequencing tests by risk, and running regression smoke sweeps. Maintained coverage against a baseline of 1,376 tests across 91 files and added regression Stories when defects surfaced.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">Growth</div>
+          <div class="owned-item-text">Ran hypothesis-driven A/B experiments as Stories with pre-defined success metrics and minimum lift thresholds. Tested onboarding-to-dashboard flow variants, personalized AI prompt copy across beta segments, and AI Chef entry point placement. Tracked leading and lagging indicators, promoted winning variants into the base experience, and archived losers with post-experiment write-ups.</div>
+        </li>
+        <li class="owned-item">
+          <div class="owned-item-label">User Researcher</div>
+          <div class="owned-item-text">Ran one-on-one interviews and structured surveys with 20+ beta users, feeding output into Story creation and Backlog Refinement. Synthesized qualitative and quantitative signal to inform Program Increment Objectives, driving a 45% lift in daily active usage and 30% reduction in load time through iterative releases.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="container">
+      <div class="cs-section-eyebrow">Stack</div>
+      <h2 class="cs-section-title">Lean tools, end-to-end ownership.</h2>
+      <div class="stack-chips">
+        <span class="stack-chip">Lovable</span>
+        <span class="stack-chip">Supabase</span>
+        <span class="stack-chip">Claude Code</span>
+        <span class="stack-chip">Gemini APIs</span>
+        <span class="stack-chip">React</span>
+        <span class="stack-chip">TypeScript</span>
+        <span class="stack-chip">GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit-cta">
+    <div class="container">
+      <div class="visit-card">
+        <h2 class="visit-title">See it <em>in action.</em></h2>
+        <p class="visit-sub">The site walks through the product. The app proves it works. Try Mejwan yourself.</p>
+        <a href="https://mejwan.com" target="_blank" rel="noopener" class="btn btn-primary">
+          mejwan.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+
+      <footer>
+        <span>© 2026 Purva Kulkarni</span>
+        <a href="index.html" style="color:var(--gold);">Back to Portfolio →</a>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
